@@ -1,0 +1,16 @@
+.header{
+  height: 7vh;
+  width: 100vw;
+  position: fixed;
+  background-color: cadetblue;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.main{
+  height: 93vh;
+  padding-top: 10vh;
+  width: 100vw;
+}
