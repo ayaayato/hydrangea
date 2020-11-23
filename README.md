@@ -1,24 +1,51 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column               | Type       | Options           |
+| -------------------- | ---------- | ----------------- |
+| email                | string     | null: false       |
+| encrypted_password   | string     | null: false       |
+| nickname             | string     | null: false       |
+| birthday             | date       | null: false       |
+| coin                 | integer    | null: false       |
+| skin                 | references | foreign_key: true |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :flowers
+- belongs_to :skin
 
-* Configuration
 
-* Database creation
+## flowers テーブル
 
-* Database initialization
+| Column         | Type       | Options                            |
+| -------------- | ---------- | ---------------------------------- |
+| title          | string     | null: false                        |
+| tag            | integer    | null: false                        |
+| image          | ActiveStorageで実装                              |
+| user           | references | foreign_key: true                  |
+| category_id    | integer    | null: false                        |
+| subcategory_id | integer    | null: false                        |
+| place          | string     |                                    |
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+- belongs_to :user
 
-* Deployment instructions
 
-* ...
+## skins テーブル
+
+| Column      | Type       | Options           |
+| ----------- | ---------- | ----------------- |
+| medal       | string     | null: false       |
+| cost        | integer    |                   |
+| icon        |            |                   |
+| head        |            |                   |
+| main        |            |                   |
+| foot        |            |                   |
+
+
+### Association
+
+- has_many :users
