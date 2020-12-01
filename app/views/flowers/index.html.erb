@@ -4,6 +4,20 @@
 hello
 </h1>
 
-
+ <ul class='item-lists'>
+    <% @flowers.each do |flowers| %>
+      <li class='list'>
+        <%= link_to flower_path(flowers.id) do %>
+        <div class='item-img-content'>
+          <%= image_tag(flowers.image, class: "item-img" ) %>
+        </div>
+        <div class='item-info'>
+          <h3 class='item-name'>
+            <%= flowers.title %>
+          </h3>
+        </div>
+        <% end %>
+      </li>
+     <% end%>
 
 </div>
