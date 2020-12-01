@@ -1,6 +1,7 @@
 class FlowersController < ApplicationController
 
 def index
+  @flowers = Flower.all.order("created_at DESC")
 end
 
 def new
@@ -14,6 +15,9 @@ def create
  else
  render :new
  end
+end
+
+def show
 end
 
 private
