@@ -10,11 +10,13 @@ class User < ApplicationRecord
           validates :coin
         end
 
-   validates :password,
-                  format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/, 
+   #validates :password,
+                  #format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/, 
                   #messege: "requires the use of both numbers and alphabets"
-                  }
+                  #}
 
   has_many :flowers
+
+  
 
 end
