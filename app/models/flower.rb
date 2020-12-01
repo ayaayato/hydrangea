@@ -1,6 +1,5 @@
 class Flower < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  
   belongs_to :category
   belongs_to :subcategory
   has_one_attached :image
