@@ -7,7 +7,7 @@ hello
  <ul class='item-lists'>
     <% @flowers.each do |flowers| %>
       <li class='list'>
-        <%= link_to root_path do %>
+        <%= link_to flower_path(flowers.id) do %>
         <div class='item-img-content'>
           <%= image_tag(flowers.image, class: "item-img" ) %>
         </div>

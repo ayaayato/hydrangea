@@ -18,6 +18,7 @@ def create
 end
 
 def show
+  @flower = Flower.find(params[:id])
 end
 
 private
