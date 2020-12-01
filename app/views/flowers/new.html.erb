@@ -26,7 +26,7 @@
           場所
           <span class="indispensable">任意</span>
         </div>
-        <%= f.text_area :explan, class:"flower-text", id:"flower-info", placeholder:"場所" ,maxlength:"20" %>
+        <%= f.text_area :place, class:"flower-text", id:"flower-info", placeholder:"場所" ,maxlength:"20" %>
       </div>
     </div>
 
@@ -42,7 +42,7 @@
           カテゴリー2
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:subcategory_id, Status.all, :id, :name, {}, {class:"select-box", id:"flower-subcategory"}) %>
+        <%= f.collection_select(:subcategory_id, Subcategory.all, :id, :name, {}, {class:"select-box", id:"flower-subcategory"}) %>
       </div>
     </div>
 

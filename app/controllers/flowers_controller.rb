@@ -19,7 +19,7 @@ end
 private
 
 def flower_params
-  params.require(:item).permit(:title, :place, :image, :category_id, :subcategory_id).merge(user_id: current_user.id)
+  params.require(:flower).permit(:title, :place, :image, :category_id, :subcategory_id).merge(user_id: current_user.id)
 end
 
 end
