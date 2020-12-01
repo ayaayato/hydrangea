@@ -35,6 +35,11 @@ else
 end
 end
 
+def destroy
+  @flower.destroy
+  redirect_to root_path
+end
+
 private
 
 def flower_params
