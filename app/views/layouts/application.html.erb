@@ -12,28 +12,56 @@
   <body>
 
   <header class="header">
-        <div class="left">
-         <h1 class="title"><a href="/">hydrangea</a></h1>
+      <div class="left">
+        <div class="index-btn">
+         <a href="/">
+          <img src="/assets/b1.png" class="blue-icon" >
+         </a>
         </div>
-        <div class="side">
+        <div class="fav-btn">
+         <div class="fav-flowerbtn">
+          <img src="/assets/p1.png" class="fav-icon">
+         </div>
+         <div class="fav-userbtn">
+          <img src="/assets/r1.png" class="fav-icon">
+         </div>
+        </div>
+      </div>
+      
+      <div class="right">
         <% if user_signed_in?%>
+        <div class="new-btn">
+        <a class="post" href="/flowers/new">
+          <img src="/assets/new1.png" class="new-icon">
+          </a>
+        </div>
+        <div class="seach-btn">
+        <a class="post" href="/">
+        <img src="/assets/seach1.png" class="seach-icon">
+        </a>
+        </div>
+        <div class="user-btn">
         <a class="post" href="/users/edit">
-          編集
-          </a>
-          <a class="post" href="/">
+          <img src="/assets/user2.png" class="user-icon">
+          <b class="coin-text">
           <%=current_user.nickname %>
+          </b>
           </a>
-          <b>
+        </div>
+        <div class="coin-btn">
+          <b class="coin-text">
+          <img src="/assets/coin2.png" class="coin-icon">
           <%=current_user.coin %>
           </b>
-          <% end %>
-          <a class="post" href="/users/sign_up">新規登録</a>
-          <a class="post" href="/flowers/new">投稿する</a>
         </div>
+          <% end %>
+          <a class="post" href="/users/sign_up">
+          </a>
+       </div>
     </header>
-
+  <div class="main">
     <%= yield %>
-
+  </div>
 
   </body>
 </html>

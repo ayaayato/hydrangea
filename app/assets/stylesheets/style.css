@@ -1,11 +1,110 @@
+/*リセットcss*/
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+ul,
+li,
+h1,
+h2,
+p,
+div {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN W3", sans-serif;
+  color: #3b4043;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+a {
+  text-decoration: none;
+  color: #3b4043;
+}
+/*リセットcss*/
+
 .header{
   height: 7vh;
   width: 100vw;
   position: fixed;
-  background-color: cadetblue;
+  background-color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: solid 3px whitesmoke;
+
+}
+.left{
+  display: flex;
+}
+.index-btn{
+  padding-left: 10px;
+  padding-right: 5px;
+  border-right: solid 2px whitesmoke;
+}
+.fav-btn{
+  padding-left: 30px;
+  display: flex;
+  align-items: center;
+}
+.fav-flowerbtn{
+  padding-right: 10px;
+}
+
+.right{
+  display: flex;
+  align-items: center;
+  padding-right: 30px;
+}
+.new-btn{
+  padding-right: 20px;
+}
+.user-btn{
+  padding-right: 15px;
+}
+.seach-btn{
+  padding-right: 20px;
+}
+.coin-text{
+  color: rgb(95, 95, 95);
+  font-family: sans-serif;
+}
+
+.blue-icon{
+  height: 50px;
+  width: 50px;
+}
+.fav-icon{
+  height: 45px;
+  width: 45px;
+}
+.user-icon{
+  height: 30px;
+  width: 20px;
+}
+.new-icon{
+  height: 30px;
+  width: 35px;
+}
+.coin-icon{
+  height: 30px;
+  width: 30px;
+}
+.seach-icon{
+  height: 30px;
+  width: 30px;
 }
 
 
