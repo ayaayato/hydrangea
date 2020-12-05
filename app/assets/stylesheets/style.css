@@ -18,6 +18,7 @@ div {
 body {
   font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN W3", sans-serif;
   color: #3b4043;
+  background-color: rgb(251, 255, 255);
 }
 
 li {
@@ -39,11 +40,11 @@ a {
   height: 7vh;
   width: 100vw;
   position: fixed;
-  background-color: white;
+  background-color: rgb(253, 255, 255);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: solid 3px whitesmoke;
+  border-bottom: solid 3px rgb(243, 245, 245);
 
 }
 .left{
@@ -52,7 +53,7 @@ a {
 .index-btn{
   padding-left: 10px;
   padding-right: 5px;
-  border-right: solid 2px whitesmoke;
+  border-right: solid 2px rgb(243, 245, 245);;
 }
 .fav-btn{
   padding-left: 30px;
@@ -68,6 +69,9 @@ a {
   align-items: center;
   justify-content: center;
   padding-right: 30px;
+}
+.btns{
+  position   : relative;
 }
 .new-btn{
   padding-right: 20px;
@@ -160,4 +164,18 @@ a {
   position: absolute;
   top: 12px;
   right: 12px;
+}
+
+
+.balloon {
+  position   : absolute;
+  display: none;
+  width:110px;
+  left: 0%;
+  top: 80%;
+  margin-top : 12px;
+}
+.balloon-text{
+  font-family: sans-serif;
+  font-size: 18px;
 }

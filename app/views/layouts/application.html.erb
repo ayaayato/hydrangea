@@ -17,40 +17,47 @@
         <div class="index-btn">
          <a href="/">
           <img src="/assets/b1.png" class="blue-icon" >
+          <span class="balloon" id="index-balloon"><b class="balloon-text">Hydrangea</b></span>
          </a>
         </div>
         <div class="fav-btn">
-         <div class="fav-flowerbtn">
+         <div class="fav-flowerbtn btns">
           <img src="/assets/p1.png" class="fav-icon icons">
+          <span class="balloon" id="fav-flower-balloon"><b class="balloon-text">お気に入り</b></span>
          </div>
-         <div class="fav-userbtn">
+         <div class="fav-userbtn btns">
           <img src="/assets/r1.png" class="fav-icon icons">
+          <span class="balloon" id="fav-user-balloon"><b class="balloon-text">フォロー</b></span>
          </div>
         </div>
       </div>
 
       <div class="right">
         <% if user_signed_in?%>
-        <div class="new-btn">
+        <div class="new-btn btns">
         <!--<a class="post" href="/flowers/new">-->
           <img src="/assets/new1.png" class="new-icon icons">
+          <span class="balloon" id="new-balloon"><b class="balloon-text">投稿する</b></span>
         <!--  </a>-->
         </div>
-        <div class="seach-btn">
+        <div class="seach-btn btns">
         <a class="post" href="/">
         <img src="/assets/seach1.png" class="seach-icon icons">
+        <span class="balloon" id="seach-balloon"><b class="balloon-text">検索する</b></span>
         </a>
         </div>
-        <div class="user-btn">
+        <div class="user-btn btns">
         <a class="post" href="/users/edit">
           <img src="/assets/user2.png" class="user-icon icons">
+          <span class="balloon" id="user-balloon"><b class="balloon-text">ユーザー情報</b></span>
           <b class="user-text">
           <%=current_user.nickname %>
           </b>
           </a>
         </div>
-        <div class="coin-btn">
+        <div class="coin-btn btns">
           <img src="/assets/coin2.png" class="coin-icon icons">
+          <span class="balloon" id="coin-balloon"><b class="balloon-text">所持コイン</b></span>
           <b class="coin-text">
           <%=current_user.coin %>
           </b>
