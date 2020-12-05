@@ -47,7 +47,7 @@
         </a>
         </div>
         <div class="user-btn btns">
-        <a class="post" href="/users/edit">
+        <a class="post" href="/users/<%=current_user.id%>">
           <img src="/assets/user2.png" class="user-icon icons">
           <span class="balloon" id="user-balloon"><b class="balloon-text">ユーザー情報</b></span>
           <b class="user-text">
@@ -68,11 +68,11 @@
        </div>
     </header>
 
-  <div class="new-modal-wrapper" id = "new-modal">
+  <div class="modal-wrapper" id = "new-modal">
     <div class="modal">
       <div id="new-form">
 
-        <!-- renderにする-->
+        <!-- new  renderにする-->
       <h2 class="flower-new-title">投稿する</h2>
     <%= form_with(model: @flower, local: true) do |f| %>
 
@@ -125,7 +125,7 @@
     </div>
 
   <% end %>
-        <!-- renderにする-->
+        <!-- new  renderにする-->
       </div>
       <div class = "close-modal">
         <img src="/assets/close1.png" class="close-icon icons">

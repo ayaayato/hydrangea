@@ -28,7 +28,7 @@ $(function(){
         $("#new-balloon").fadeIn();
       },
       function(){
-        $("#new-balloon").fadeOut();
+        $("#new-balloon").fadeOut(200);
       });
     
     $(".seach-btn").hover(
@@ -36,7 +36,7 @@ $(function(){
         $("#seach-balloon").fadeIn();
       },
       function(){
-        $("#seach-balloon").fadeOut();
+        $("#seach-balloon").fadeOut(200);
       });  
 
     $(".user-btn").hover(
@@ -44,7 +44,7 @@ $(function(){
         $("#user-balloon").fadeIn();
       },
       function(){
-        $("#user-balloon").fadeOut();
+        $("#user-balloon").fadeOut(200);
       });
 
     $(".coin-btn").hover(
@@ -52,7 +52,7 @@ $(function(){
         $("#coin-balloon").fadeIn();
       },
       function(){
-        $("#coin-balloon").fadeOut();
+        $("#coin-balloon").fadeOut(200);
       });
 
     $(".fav-flowerbtn").hover(
@@ -60,7 +60,7 @@ $(function(){
         $("#fav-flower-balloon").fadeIn();
       },
       function(){
-        $("#fav-flower-balloon").fadeOut();
+        $("#fav-flower-balloon").fadeOut(200);
       });
       
     $(".fav-userbtn").hover(
@@ -68,7 +68,7 @@ $(function(){
         $("#fav-user-balloon").fadeIn();
       },
       function(){
-        $("#fav-user-balloon").fadeOut();
+        $("#fav-user-balloon").fadeOut(200);
       });
 
     $(".blue-icon").hover(
@@ -78,13 +78,17 @@ $(function(){
       },
       function(){
         $(this).fadeTo(300, 1);
-        $("#index-balloon").fadeOut();
+        $("#index-balloon").fadeOut(200);
       }
       );
 
       $(".new-btn").click(function(){
         $("#new-modal").fadeIn();
       });
+
+      //$(".show-btn").click(function(){
+        //$("#show-modal").fadeIn();
+      //});
 
       $(".close-modal").click(function(){
         $("#new-modal").fadeOut();
