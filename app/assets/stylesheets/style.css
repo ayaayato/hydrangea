@@ -66,20 +66,35 @@ a {
 .right{
   display: flex;
   align-items: center;
+  justify-content: center;
   padding-right: 30px;
 }
 .new-btn{
   padding-right: 20px;
+  padding-top: 5px;
 }
 .user-btn{
   padding-right: 15px;
 }
 .seach-btn{
   padding-right: 20px;
+  padding-top: 5px;
+}
+.user-text{
+  color: rgb(95, 95, 95);
+  font-family: sans-serif;
+  font-size: 24px;
+}
+.coin-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5px;
 }
 .coin-text{
   color: rgb(95, 95, 95);
   font-family: sans-serif;
+  font-size: 24px;
 }
 
 .blue-icon{
@@ -87,8 +102,8 @@ a {
   width: 50px;
 }
 .fav-icon{
-  height: 45px;
-  width: 45px;
+  height: 40px;
+  width: 40px;
 }
 .user-icon{
   height: 30px;
@@ -117,3 +132,4 @@ a {
 .coin-field{
   visibility: hidden;
 }
+

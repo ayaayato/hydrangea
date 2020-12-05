@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="icon" href="/assets/favicon.ico">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -20,37 +21,37 @@
         </div>
         <div class="fav-btn">
          <div class="fav-flowerbtn">
-          <img src="/assets/p1.png" class="fav-icon">
+          <img src="/assets/p1.png" class="fav-icon icons">
          </div>
          <div class="fav-userbtn">
-          <img src="/assets/r1.png" class="fav-icon">
+          <img src="/assets/r1.png" class="fav-icon icons">
          </div>
         </div>
       </div>
-      
+
       <div class="right">
         <% if user_signed_in?%>
         <div class="new-btn">
         <a class="post" href="/flowers/new">
-          <img src="/assets/new1.png" class="new-icon">
+          <img src="/assets/new1.png" class="new-icon icons">
           </a>
         </div>
         <div class="seach-btn">
         <a class="post" href="/">
-        <img src="/assets/seach1.png" class="seach-icon">
+        <img src="/assets/seach1.png" class="seach-icon icons">
         </a>
         </div>
         <div class="user-btn">
         <a class="post" href="/users/edit">
-          <img src="/assets/user2.png" class="user-icon">
-          <b class="coin-text">
+          <img src="/assets/user2.png" class="user-icon icons">
+          <b class="user-text">
           <%=current_user.nickname %>
           </b>
           </a>
         </div>
         <div class="coin-btn">
+          <img src="/assets/coin2.png" class="coin-icon icons">
           <b class="coin-text">
-          <img src="/assets/coin2.png" class="coin-icon">
           <%=current_user.coin %>
           </b>
         </div>
@@ -58,10 +59,12 @@
           <a class="post" href="/users/sign_up">
           </a>
        </div>
+
+       
     </header>
   <div class="main">
     <%= yield %>
   </div>
-
+<script href="head.js"></script>
   </body>
 </html>
