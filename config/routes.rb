@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   }
   
   root to: "flowers#index"
-  resources :flowers
+  resources :flowers do
+    get :icons, on: :member
+  end
+
+  resources :skins, only:[:show]
   
 end

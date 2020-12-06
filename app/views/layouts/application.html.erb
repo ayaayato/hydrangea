@@ -35,7 +35,7 @@
       <div class="right">
         <% if user_signed_in?%>
         <div class="new-btn btns">
-        <!--<a class="post" href="/flowers/new">-->
+        <!--<a class="post" href="/flowers/new">  newとseachはflowerルーティング以外では隠す-->
           <img src="/assets/new1.png" class="new-icon icons">
           <span class="balloon" id="new-balloon"><b class="balloon-text">投稿する</b></span>
         <!--  </a>-->
@@ -47,8 +47,10 @@
         </a>
         </div>
         <div class="user-btn btns">
-        <a class="post" href="/users/<%=current_user.id%>">
-          <img src="/assets/user2.png" class="user-icon icons">
+          <a class="post" href="/users/<%=current_user.id%>">
+          <span class="user-icon">
+          <%= image_tag(url_for(controller: :skins, action: :show, id: 1))%>
+          </span>
           <span class="balloon" id="user-balloon"><b class="balloon-text">ユーザー情報</b></span>
           <b class="user-text">
           <%=current_user.nickname %>
@@ -64,7 +66,7 @@
         </div>
         <div class="exit-btn btns">
         <!--<a class="post" href="/users/sign_out">-->
-          <img src="/assets/ume.png" class="exit-icon icons">
+          <img src="/assets/exit1.png" class="exit-icon icons">
           <span class="exit-balloon" id="exit-balloon"><b class="balloon-text">ログアウト</b></span>
           <!--  </a>-->
         </div>

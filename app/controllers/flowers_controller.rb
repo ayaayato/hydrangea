@@ -6,6 +6,14 @@ class FlowersController < ApplicationController
 def index
   @flowers = Flower.all.order("created_at DESC")
   @flower = Flower.new
+  respond_to do |format|
+    format.html
+  end
+end
+
+def icons
+  #@skin = Skin.where(id: 1).first
+  #send_data @skin.icon, option = {type: 'image/jpeg', disposition: 'inline'}
 end
 
 def new #不用の為、最後に消す
