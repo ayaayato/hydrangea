@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="icon" href="/assets/favicon.ico">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -12,28 +13,151 @@
   <body>
 
   <header class="header">
-        <div class="left">
-         <h1 class="title"><a href="/">hydrangea</a></h1>
+      <div class="left">
+        <div class="index-btn">
+         <a href="/">
+          <img src="/assets/b1.png" class="blue-icon" >
+          <span class="index-balloon" id="index-balloon"><b class="balloon-text">Hydrangea</b></span>
+         </a>
         </div>
-        <div class="side">
+        <div class="fav-btn">
+         <div class="fav-flowerbtn btns">
+          <img src="/assets/p1.png" class="fav-icon icons">
+          <span class="balloon" id="fav-flower-balloon"><b class="balloon-text">お気に入り</b></span>
+         </div>
+         <div class="fav-userbtn btns">
+          <img src="/assets/r1.png" class="fav-icon icons">
+          <span class="balloon" id="fav-user-balloon"><b class="balloon-text">フォロー</b></span>
+         </div>
+        </div>
+      </div>
+
+      <div class="right">
         <% if user_signed_in?%>
-        <a class="post" href="/users/edit">
-          編集
-          </a>
-          <a class="post" href="/">
+        <div class="new-btn btns">
+        <!--<a class="post" href="/flowers/new">-->
+          <img src="/assets/new1.png" class="new-icon icons">
+          <span class="balloon" id="new-balloon"><b class="balloon-text">投稿する</b></span>
+        <!--  </a>-->
+        </div>
+        <div class="seach-btn btns">
+        <a class="post" href="/">
+        <img src="/assets/seach1.png" class="seach-icon icons">
+        <span class="balloon" id="seach-balloon"><b class="balloon-text">検索する</b></span>
+        </a>
+        </div>
+        <div class="user-btn btns">
+        <a class="post" href="/users/<%=current_user.id%>">
+          <img src="/assets/user2.png" class="user-icon icons">
+          <span class="balloon" id="user-balloon"><b class="balloon-text">ユーザー情報</b></span>
+          <b class="user-text">
           <%=current_user.nickname %>
+          </b>
           </a>
-          <b>
+        </div>
+        <div class="coin-btn btns">
+          <img src="/assets/coin2.png" class="coin-icon icons">
+          <span class="balloon" id="coin-balloon"><b class="balloon-text">所持コイン</b></span>
+          <b class="coin-text">
           <%=current_user.coin %>
           </b>
-          <% end %>
-          <a class="post" href="/users/sign_up">新規登録</a>
-          <a class="post" href="/flowers/new">投稿する</a>
         </div>
+        <div class="exit-btn btns">
+        <!--<a class="post" href="/users/sign_out">-->
+          <img src="/assets/ume.png" class="exit-icon icons">
+          <span class="exit-balloon" id="exit-balloon"><b class="balloon-text">ログアウト</b></span>
+          <!--  </a>-->
+        </div>
+          <% end %>
+          <a class="post" href="/users/sign_up">
+          </a>
+       </div>
     </header>
 
+  <div class="modal-wrapper" id = "new-modal">
+    <div class="modal">
+      <div id="new-form">
+
+        <!-- new  renderにする-->
+      <h2 class="flower-new-title">投稿する</h2>
+    <%= form_with(model: @flower, local: true) do |f| %>
+
+    <div class="img-upload">
+      <div class="weight-bold-text">
+        画像
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :image, id:"flower-image" %>
+      </div>
+    </div>
+
+    <div class="new-flower">
+      <div class="weight-bold-text">
+        題名
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :title, class:"flower-text", id:"flower-name", placeholder:"題名", maxlength:"20" %>
+      <div class="flower-explain">
+        <div class="weight-bold-text">
+          場所
+          <span class="indispensable">任意</span>
+        </div>
+        <%= f.text_area :place, class:"flower-text", id:"flower-info", placeholder:"場所" ,maxlength:"20" %>
+      </div>
+    </div>
+
+    <div class="flower-detail">
+      <div class="weight-bold-text">詳細</div>
+      <div class="form">
+        <div class="weight-bold-text">
+          カテゴリー
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"flower-category"}) %>
+        <div class="weight-bold-text">
+          カテゴリー2
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:subcategory_id, Subcategory.all, :id, :name, {}, {class:"select-box", id:"flower-subcategory"}) %>
+      </div>
+    </div>
+
+    <div class="send-btn-contents">
+      <%= f.submit "投稿する" ,class:"sell-btn" %>
+    </div>
+
+  <% end %>
+        <!-- new  renderにする-->
+      </div>
+      <div class = "close-modal">
+        <img src="/assets/close1.png" class="close-icon icons">
+      </div>
+    </div>
+  </div>
+
+  <!--logout renderにする-->
+  <div class="modal-wrapper" id = "exit-modal">
+    <div class="modal">
+     <h2>ログアウトしますか？</h2>
+     <a class="post" href="/users/sign_out">
+     はい
+     </a>
+     <p class="close-modal">いいえ</p>
+      <div class = "close-modal">
+        <img src="/assets/close1.png" class="close-icon icons">
+      </div>
+
+    </div>
+  </div>
+  <!--logout renderにする-->
+
+  <div class="main">
     <%= yield %>
-
-
+  </div>
+<script href="head.js"></script>
   </body>
 </html>

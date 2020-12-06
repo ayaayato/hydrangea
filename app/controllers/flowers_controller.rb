@@ -5,9 +5,10 @@ class FlowersController < ApplicationController
 
 def index
   @flowers = Flower.all.order("created_at DESC")
+  @flower = Flower.new
 end
 
-def new
+def new #不用の為、最後に消す
   @flower = Flower.new
 end
 
