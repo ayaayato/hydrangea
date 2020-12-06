@@ -17,7 +17,7 @@
         <div class="index-btn">
          <a href="/">
           <img src="/assets/b1.png" class="blue-icon" >
-          <span class="balloon" id="index-balloon"><b class="balloon-text">Hydrangea</b></span>
+          <span class="index-balloon" id="index-balloon"><b class="balloon-text">Hydrangea</b></span>
          </a>
         </div>
         <div class="fav-btn">
@@ -61,6 +61,12 @@
           <b class="coin-text">
           <%=current_user.coin %>
           </b>
+        </div>
+        <div class="exit-btn btns">
+        <!--<a class="post" href="/users/sign_out">-->
+          <img src="/assets/ume.png" class="exit-icon icons">
+          <span class="exit-balloon" id="exit-balloon"><b class="balloon-text">ログアウト</b></span>
+          <!--  </a>-->
         </div>
           <% end %>
           <a class="post" href="/users/sign_up">
@@ -132,6 +138,22 @@
       </div>
     </div>
   </div>
+
+  <!--logout renderにする-->
+  <div class="modal-wrapper" id = "exit-modal">
+    <div class="modal">
+     <h2>ログアウトしますか？</h2>
+     <a class="post" href="/users/sign_out">
+     はい
+     </a>
+     <p class="close-modal">いいえ</p>
+      <div class = "close-modal">
+        <img src="/assets/close1.png" class="close-icon icons">
+      </div>
+
+    </div>
+  </div>
+  <!--logout renderにする-->
 
   <div class="main">
     <%= yield %>

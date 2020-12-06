@@ -55,6 +55,14 @@ $(function(){
         $("#coin-balloon").fadeOut(200);
       });
 
+    $(".exit-btn").hover(
+      function(){
+        $(".exit-balloon").fadeIn();
+      },
+      function(){
+        $(".exit-balloon").fadeOut(200);
+      });
+
     $(".fav-flowerbtn").hover(
       function(){
         $("#fav-flower-balloon").fadeIn();
@@ -74,16 +82,20 @@ $(function(){
     $(".blue-icon").hover(
       function(){
         $(this).fadeTo(300, 0.7);
-        $("#index-balloon").fadeIn();
+        $(".index-balloon").fadeIn();
       },
       function(){
         $(this).fadeTo(300, 1);
-        $("#index-balloon").fadeOut(200);
+        $(".index-balloon").fadeOut(200);
       }
       );
 
       $(".new-btn").click(function(){
         $("#new-modal").fadeIn();
+      });
+
+      $(".exit-btn").click(function(){
+        $("#exit-modal").fadeIn();
       });
 
       //$(".show-btn").click(function(){
@@ -94,6 +106,7 @@ $(function(){
         $("#new-modal").fadeOut();
         $("#signup-modal").fadeOut();
         $("#login-modal").fadeOut();
+        $("#exit-modal").fadeOut();
       });
     
   });
