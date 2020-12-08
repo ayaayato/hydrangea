@@ -34,6 +34,7 @@
 
       <div class="right">
         <% if user_signed_in?%>
+         <% if controller.controller_name == "flowers"%>
         <div class="new-btn btns">
         <!--<a class="post" href="/flowers/new">  newとseachはflowerルーティング以外では隠す-->
           <img src="/assets/new1.png" class="new-icon icons">
@@ -46,10 +47,11 @@
         <span class="balloon" id="seach-balloon"><b class="balloon-text">検索する</b></span>
         </a>
         </div>
+        <%end%>
         <div class="user-btn btns">
           <a class="post" href="/users/<%=current_user.id%>">
           <span class="user-icon">
-          <%= image_tag(url_for(controller: :skins, action: :show, id: 1))%>
+          <%= image_tag(url_for(controller: :skins, action: :show, id: current_user.icon_ids))%>
           </span>
           <span class="balloon" id="user-balloon"><b class="balloon-text">ユーザー情報</b></span>
           <b class="user-text">
@@ -70,9 +72,14 @@
           <span class="exit-balloon" id="exit-balloon"><b class="balloon-text">ログアウト</b></span>
           <!--  </a>-->
         </div>
-          <% end %>
-          <a class="post" href="/users/sign_up">
+          <% else %>
+          <a class="post" href="/users/sign_in">
+          ログイン
           </a>
+          <a class="post" href="/users/sign_up">
+          新規登録
+          </a>
+          <%end%>
        </div>
     </header>
 

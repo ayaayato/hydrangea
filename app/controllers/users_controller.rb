@@ -5,6 +5,15 @@ class UsersController < ApplicationController
     @flowers = @user.flowers
   end
 
+  #def create
+    #@user = User.new(configure_sign_up_params)
+    #session["devise.regist_data"] = {user: @user.attributes}
+    #session["devise.regist_data"][:user]["password"] = params[:user][:password]
+    #if @user.save
+    #redirect_to root_path
+    #end
+   #end
+
   def edit
     @user = User.find(params[:id])
   end
@@ -21,7 +30,11 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:nickname, :email, :birthday, :coin)
+    params.require(:user).permit(:nickname, :email, :birthday, :coin, :icon_ids)
   end
+
+  #def configure_sign_up_params
+    #devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :password, :password_confirmation,:email,:icon_ids, :birthday])
+  #end
 
 end
