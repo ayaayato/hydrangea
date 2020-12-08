@@ -41,9 +41,11 @@ $(function(){
 
     $(".user-btn").hover(
       function(){
+        $(".user-icon, .user-text").fadeTo(300, 0.6);
         $("#user-balloon").fadeIn();
       },
       function(){
+        $(".user-icon, .user-text").fadeTo(300, 1);
         $("#user-balloon").fadeOut(200);
       });
 

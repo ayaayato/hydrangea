@@ -11,11 +11,6 @@ def index
   end
 end
 
-def icons
-  #@skin = Skin.where(id: 1).first
-  #send_data @skin.icon, option = {type: 'image/jpeg', disposition: 'inline'}
-end
-
 def new #不用の為、最後に消す
   @flower = Flower.new
 end

@@ -48,6 +48,7 @@
         </a>
         </div>
         <%end%>
+        <%# if controller.controller_name != "skins"%>
         <div class="user-btn btns">
           <a class="post" href="/users/<%=current_user.id%>">
           <span class="user-icon">
@@ -59,8 +60,11 @@
           </b>
           </a>
         </div>
+        <%#end%>
         <div class="coin-btn btns">
+         <a class="post" href="/skins">
           <img src="/assets/coin2.png" class="coin-icon icons">
+         </a>
           <span class="balloon" id="coin-balloon"><b class="balloon-text">所持コイン</b></span>
           <b class="coin-text">
           <%=current_user.coin %>

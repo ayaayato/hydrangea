@@ -13,6 +13,15 @@
     <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) furima太郎", maxlength:"40" %>
   </div>
 
+ <div>
+  <span class="skin-icon">
+    <%= image_tag(url_for(controller: :skins, action: :preview, id: 1))%>
+  </span>
+  <span class="skin-icon">
+    <%= image_tag(url_for(controller: :skins, action: :preview, id: 2))%>
+  </span>
+ </div>
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>

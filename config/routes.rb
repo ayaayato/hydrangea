@@ -13,10 +13,14 @@ Rails.application.routes.draw do
   resources :users, only: [:show,:edit,:update]
   
   root to: "flowers#index"
-  resources :flowers do
-    get :icons, on: :member
+  resources :flowers
+
+  resources :skins, only:[:show,:index]do
+    member do
+      get :preview
+    end
+   resources :orders, only:[:index,:create]
   end
 
-  resources :skins, only:[:show]
   
 end

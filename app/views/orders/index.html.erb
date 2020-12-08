@@ -1,0 +1,16 @@
+<h1>スキン購入</h1>
+
+<div>
+<%= image_tag(url_for(controller: :skins, action: :show, id: @skins.id))%>
+
+<%= @skins.medal%>
+</div>
+
+<div>
+<%= form_with url: "/skins/#{@skins.id}/orders", model: @order, local: true do |f| %>
+<div>
+<%= f.hidden_field :user_id, :value => current_user.id,readonly: true%>
+<%= f.submit "購入する" ,class:"send-btn" %>
+</div>
+<%end%>
+</div>

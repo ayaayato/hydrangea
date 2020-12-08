@@ -1,6 +1,18 @@
 class SkinsController < ApplicationController
   def show
-    @skin = Skin.where(id: current_user.icon_ids).first
-  send_data @skin.icon, option = {type: 'image/jpeg', disposition: 'inline'}
+    @skin = Skin.find(params[:id])
+    send_data @skin.icon, option = {type: 'image/jpeg', disposition: 'inline'}
+  end
+
+  def preview
+    @skins = Skin.find(params[:id])
+  end
+
+  def index
+    @name = Skin.all
+  end
+
+  def buy
+    
   end
 end
