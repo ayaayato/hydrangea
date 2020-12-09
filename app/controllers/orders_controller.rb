@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   before_action :find_skin, only:[:index, :create]
 
   def index
+    @find = Order.find_by(user_id: current_user.id, skin_id: params[:skin_id])
     @order = Order.new
   end
 
@@ -12,7 +13,6 @@ class OrdersController < ApplicationController
     if @order.save
       redirect_to root_path
     end
-
   end
 
   private
