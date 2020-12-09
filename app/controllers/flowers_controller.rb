@@ -18,7 +18,7 @@ end
 def create
   @flower = Flower.new(flower_params)
  if @flower.save
-  redirect_to root_path
+  redirect_to controller: 'users', action: 'level', id: current_user.id
  else
  render :new
  end

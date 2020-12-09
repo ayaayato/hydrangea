@@ -1,7 +1,7 @@
 <h1>スキン購入</h1>
 
 <div>
-<% 2.times do |n|%>
+<% (@count).times do |n|%>
   <span class="skin-icon", id="<%n+1%>">
     <%= image_tag(url_for(controller: :skins, action: :show, id: n+1))%>
     <a href="/skins/<%=n+1%>/orders">

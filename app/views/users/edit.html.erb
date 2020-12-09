@@ -21,6 +21,16 @@
     <%= image_tag(url_for(controller: :skins, action: :show, id: 2))%>
   </span>
  </div>
+ <div>
+<% @find.each do |skin|%>
+  <span class="skin-icon", id="<%skin.skin_id%>">
+    <%= image_tag(url_for(controller: :skins, action: :show, id: skin.skin_id))%>
+
+    <%= @name[skin.skin_id-1]['medal'] %>
+    </a>
+  </span>
+<% end %>
+</div>
 
   <div class="actions">
     <%= f.submit "Update" %>

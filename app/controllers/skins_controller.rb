@@ -10,6 +10,7 @@ class SkinsController < ApplicationController
 
   def index
     @name = Skin.all
+    @count = Skin.count
   end
 
   def buy

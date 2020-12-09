@@ -10,7 +10,12 @@ Rails.application.routes.draw do
     #get "sign_out", :to => "users/sessions#destroy" 
   #end
 
-  resources :users, only: [:show,:edit,:update]
+  resources :users, only: [:show,:edit,:update]do
+  member do
+    patch :level
+    patch :icon
+  end
+end
   
   root to: "flowers#index"
   resources :flowers

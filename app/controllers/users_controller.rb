@@ -3,6 +3,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @name = @user.nickname
     @flowers = @user.flowers
+    @find = Order.where(user_id: current_user.id)
+    @names = Skin.all
   end
 
   #def create
@@ -16,6 +18,8 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @find = Order.where(user_id: current_user.id)
+    @name = Skin.all
   end
 
   def update
@@ -25,6 +29,26 @@ class UsersController < ApplicationController
       redirect_to user_path(@user.id)
    else
      render :edit
+   end
+  end
+
+  def level
+    user = User.find(params[:id])
+    levels = Order.where(user_id: current_user.id)
+    level = levels.count
+    level_up = level + 1
+    user.update(coin: level_up)
+    if user.save
+      redirect_to root_path
+    end
+  end
+
+  def icon
+    gon.icon = 1
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    if @user.save
+      redirect_to user_path(@user.id)
    end
   end
 
