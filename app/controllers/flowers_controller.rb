@@ -5,7 +5,7 @@ class FlowersController < ApplicationController
 
 def index
   @flowers = Flower.all.order("created_at DESC")
-  @flower = Flower.new
+  @flower = FlowersTag.new
   respond_to do |format|
     format.html
   end
@@ -16,11 +16,12 @@ def new #不用の為、最後に消す
 end
 
 def create
-  @flower = Flower.new(flower_params)
+  @flower = FlowersTag.new(flower_params)
  if @flower.save
-  redirect_to controller: 'users', action: 'level', id: current_user.id
+  #redirect_to controller: 'users', action: 'level', id: current_user.id
+  redirect_to root_path
  else
- render :new
+ redirect_to root_path
  end
 end
 
@@ -47,7 +48,7 @@ end
 private
 
 def flower_params
-  params.require(:flower).permit(:title, :place, :image, :category_id, :subcategory_id).merge(user_id: current_user.id)
+  params.require(:flowers_tag).permit(:title, :place, :image, :category_id, :subcategory_id, :name).merge(user_id: current_user.id)
 end
 
 def find_flower

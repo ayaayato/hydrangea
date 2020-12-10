@@ -18,7 +18,11 @@ Rails.application.routes.draw do
 end
   
   root to: "flowers#index"
-  resources :flowers
+  resources :flowers do
+    collection do
+      get :ajax
+    end
+  end
 
   resources :skins, only:[:show,:index]do
     member do

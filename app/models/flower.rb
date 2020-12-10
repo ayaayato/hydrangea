@@ -4,6 +4,8 @@ class Flower < ApplicationRecord
   belongs_to :subcategory
   has_one_attached :image
   belongs_to :user
+  has_many :flower_tag_relations
+  has_many :tags, through: :flower_tag_relations
 
   with_options presence: true do
     validates :category_id
