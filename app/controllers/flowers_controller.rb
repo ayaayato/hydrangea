@@ -6,6 +6,9 @@ class FlowersController < ApplicationController
 def index
   @flowers = Flower.all.order("created_at DESC")
   @flower = Flower.new
+  respond_to do |format|
+    format.html
+  end
 end
 
 def new #不用の為、最後に消す
@@ -15,7 +18,7 @@ end
 def create
   @flower = Flower.new(flower_params)
  if @flower.save
-  redirect_to root_path
+  redirect_to controller: 'users', action: 'level', id: current_user.id
  else
  render :new
  end

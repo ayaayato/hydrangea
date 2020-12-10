@@ -42,10 +42,7 @@
 | medal       | string     | null: false       |
 | cost        | integer    |                   |
 | price       | integer    |                   |
-| icon        |            |                   |
-| head        |            |                   |
-| main        |            |                   |
-| foot        |            |                   |
+| icon        | binary     |                   |
 
 
 ### Association

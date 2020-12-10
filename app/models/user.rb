@@ -16,6 +16,8 @@ class User < ApplicationRecord
                   #}
 
   has_many :flowers
+  has_many :orders
+  has_many :skins, through: :orders
 
   
 

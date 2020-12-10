@@ -113,10 +113,10 @@ a {
   height: 40px;
   width: 40px;
 }
-.user-icon{
+/*.user-icon{
   height: 30px;
   width: 20px;
-}
+}*/
 .new-icon{
   height: 30px;
   width: 35px;
@@ -129,10 +129,10 @@ a {
   height: 30px;
   width: 30px;
 }
-/*.exit-icon{
+.exit-icon{
   height: 30px;
   width: 30px;
-}*/
+}
 
 
 .main{

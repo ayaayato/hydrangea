@@ -27,6 +27,29 @@
       <a class="post" href="/users/<%=current_user.id%>/edit">
       編集
       </a>
+      <%= link_to 'レベルアップ', "/users/#{current_user.id}/level", method: :patch %>
+
+       <h1>所持スキン</h1>
+       <div>
+        <% @find.each do |skin|%>
+        <div class="select-icon", id="<%=skin.skin_id%>">
+        <span class="select-icon", id="<%=skin.skin_id%>">
+        <%= image_tag(url_for(controller: :skins, action: :show, id: skin.skin_id))%>
+        <%= @names[skin.skin_id-1]['medal'] %>
+        </span>
+        </div>
+        <% end %>
+       </div>
+
+       <div>
+       <%= form_with url: "/users/#{@user.id}/icon", model: @user, local: true do |f| %>
+       <div>
+       <%= f.hidden_field :icon_ids, value: 1, id: "icon-send", readonly: true %>
+       <%= f.submit "決定" ,class:"send-btn" %>
+       </div>
+       <%end%>
+       </div>
+
       <h2 class="page-heading">
         <%= "#{@user.nickname}さんの投稿"%>
       </h2>
