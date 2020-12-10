@@ -28,6 +28,13 @@ end
 def show
 end
 
+def ajax
+  return nil if params[:keyword] == ""
+  tag = Tag.where(['name LIKE ?', "%#{params[:keyword]}%"] )
+  render json:{ keyword: tag }
+end
+
+
 def edit
 end
 
