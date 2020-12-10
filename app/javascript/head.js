@@ -115,8 +115,8 @@ $(function(){
 
         $(".select-icon").click(function(){
           $(this).fadeTo(300, 0.7);
-          let gon.icon = $(this).attr('id');
-          $("#output-text").text(gon.icon);
+          let iconId = $(this).attr('id');
+          $("#icon-send").val(iconId);
         });
 
   });

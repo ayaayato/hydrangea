@@ -41,11 +41,10 @@
         <% end %>
        </div>
 
-<p class="output-item">理由：<span id="output-text"></span></p> 
        <div>
        <%= form_with url: "/users/#{@user.id}/icon", model: @user, local: true do |f| %>
        <div>
-       <%= f.hidden_field :icon_ids, value: @gon, readonly: true%>
+       <%= f.hidden_field :icon_ids, value: 1, id: "icon-send", readonly: true %>
        <%= f.submit "決定" ,class:"send-btn" %>
        </div>
        <%end%>

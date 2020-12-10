@@ -44,7 +44,6 @@ class UsersController < ApplicationController
   end
 
   def icon
-    gon.icon = 1
     @user = User.find(params[:id])
     @user.update(user_params)
     if @user.save
