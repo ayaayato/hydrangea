@@ -93,7 +93,7 @@
 
         <!-- new  renderにする-->
       <h2 class="flower-new-title">投稿する</h2>
-    <%= form_with(model: @flower, local: true) do |f| %>
+    <%= form_with(model: @flower, url: flowers_path, local: true) do |f| %>
 
     <div class="img-upload">
       <div class="weight-bold-text">
@@ -137,6 +137,13 @@
         </div>
         <%= f.collection_select(:subcategory_id, Subcategory.all, :id, :name, {}, {class:"select-box", id:"flower-subcategory"}) %>
       </div>
+    </div>
+
+    <div class="tag-field", id='tag-field'>
+      <%= f.label :name, "タグ" %>
+      <%= f.text_field :name, class:"input-tag" %>
+    </div>
+    <div id="ajax-result">
     </div>
 
     <div class="send-btn-contents">

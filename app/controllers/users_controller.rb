@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 
   def level
     user = User.find(params[:id])
-    levels = Order.where(user_id: current_user.id)
+    levels = Flower.where(user_id: current_user.id)
     level = levels.count
     level_up = level + 1
     user.update(coin: level_up)

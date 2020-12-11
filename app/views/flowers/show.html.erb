@@ -36,5 +36,8 @@
         </tr>
       </tbody>
     </table>
+    <% @flower.tags.each do |tag| %>
+    <span class= 'badge badge-primary'><%= tag.name %></span>
+    <% end %>
   </div>
   </div>
