@@ -40,4 +40,11 @@
     <span class= 'badge badge-primary'><%= tag.name %></span>
     <% end %>
   </div>
+
+<%if current_user.id != @flower.user_id%>
+<div class='star-btn' id="favo_<%= @flower.id %>">
+  <%= render "favos/favo", flower: @flower %>
+</div>
+<%end%>
+
   </div>

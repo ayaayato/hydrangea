@@ -6,6 +6,7 @@ class Flower < ApplicationRecord
   belongs_to :user
   has_many :flower_tag_relations, dependent: :destroy 
   has_many :tags, through: :flower_tag_relations
+  has_many :favos, dependent: :destroy
 
   with_options presence: true do
     validates :category_id
