@@ -17,6 +17,7 @@ class FlowersTag
     validates :subcategory_id
   end
 
+
   def save
     flower = Flower.create(title: title, place: place, image: image, category_id: category_id, subcategory_id: subcategory_id, user_id: user_id)
     tag = Tag.where(name: name).first_or_initialize
@@ -24,5 +25,6 @@ class FlowersTag
 
     FlowerTagRelation.create(flower_id: flower.id, tag_id: tag.id)
   end
+
 
 end
