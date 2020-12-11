@@ -5,6 +5,7 @@ class FlowersController < ApplicationController
   before_action :exile_to_index, only: [:edit, :destroy]
 
 def index
+  @f = Flower.ransack(params[:q])
   @flowers = Flower.all.order("created_at DESC")
   @flower = FlowersTag.new
   respond_to do |format|
@@ -48,7 +49,7 @@ def edit
 end
 
 def update
-   @flower = Flower.update(flower_params)
+   @flower.update(flower_params)
    #@tag = FlowersTag.new(flower_params, flower: @flower)
    #tag_list = params[:flower][:name].split(",")
     #if @tag.valid?
@@ -72,6 +73,11 @@ def destroy
   #@flower = Flower.find(params[:id])
   #@flower.destroy
   #redirect_to root_path
+end
+
+def search
+  @f = Flower.ransack(params[:q])
+  @results = @f.result
 end
 
 private

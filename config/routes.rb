@@ -20,8 +20,10 @@ end
   root to: "flowers#index"
   resources :flowers do
     collection do
+      get :search
       get :ajax
     end
+    resources :favos, only: [:create, :destroy]
   end
 
   resources :skins, only:[:show,:index]do

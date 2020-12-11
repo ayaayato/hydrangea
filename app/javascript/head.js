@@ -100,6 +100,10 @@ $(function(){
         $("#exit-modal").fadeIn();
       });
 
+      $(".seach-btn").click(function(){
+        $("#seach-modal").fadeIn();
+      });
+
       //$(".show-btn").click(function(){
         //$("#show-modal").fadeIn();
       //});
@@ -109,6 +113,7 @@ $(function(){
         $("#signup-modal").fadeOut();
         $("#login-modal").fadeOut();
         $("#exit-modal").fadeOut();
+        $("#seach-modal").fadeOut();
       });
     
 
