@@ -2,7 +2,7 @@ class FavosController < ApplicationController
 
   def create
     @flower = Flower.find(params[:flower_id])
-    if @flower.user_id != current_user.id   # 自分の投稿以外にお気に入り登録が可能
+    if @flower.user_id != current_user.id
       @favo = Favo.create(user_id: current_user.id, flower_id: @flower.id)
     end
   end 

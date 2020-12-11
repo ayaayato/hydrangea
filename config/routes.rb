@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   member do
     patch :level
     patch :icon
+    get   :favorite
   end
 end
   
