@@ -20,6 +20,8 @@
           <span class="index-balloon" id="index-balloon"><b class="balloon-text">Hydrangea</b></span>
          </a>
         </div>
+
+        <%if user_signed_in?%>
         <div class="fav-btn">
          <div class="fav-flowerbtn btns">
          <a href="/users/<%=current_user.id%>/favorite">
@@ -27,11 +29,15 @@
           <span class="balloon" id="fav-flower-balloon"><b class="balloon-text">お気に入り</b></span>
           </a>
          </div>
+
          <div class="fav-userbtn btns">
+          <a href="/users/<%=current_user.id%>/lover">
           <img src="/assets/r1.png" class="fav-icon icons">
           <span class="balloon" id="fav-user-balloon"><b class="balloon-text">フォロー</b></span>
+          </a>
          </div>
         </div>
+        <%end%>
       </div>
 
       <div class="right">

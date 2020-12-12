@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_11_054323) do
+ActiveRecord::Schema.define(version: 2020_12_11_092439) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -63,6 +63,16 @@ ActiveRecord::Schema.define(version: 2020_12_11_054323) do
     t.index ["user_id"], name: "index_flowers_on_user_id"
   end
 
+  create_table "loves", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "like_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["like_id"], name: "index_loves_on_like_id"
+    t.index ["user_id", "like_id"], name: "index_loves_on_user_id_and_like_id", unique: true
+    t.index ["user_id"], name: "index_loves_on_user_id"
+  end
+
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "skin_id"
     t.bigint "user_id"
@@ -109,6 +119,8 @@ ActiveRecord::Schema.define(version: 2020_12_11_054323) do
   add_foreign_key "flower_tag_relations", "flowers"
   add_foreign_key "flower_tag_relations", "tags"
   add_foreign_key "flowers", "users"
+  add_foreign_key "loves", "users"
+  add_foreign_key "loves", "users", column: "like_id"
   add_foreign_key "orders", "skins"
   add_foreign_key "orders", "users"
 end

@@ -56,6 +56,11 @@ class UsersController < ApplicationController
     @favos = Flower.find(favos)
   end
 
+  def lover
+    loves = Love.where(user_id: current_user.id).order(created_at: :desc).pluck(:like_id)
+    @loves = User.find(loves)
+  end
+
   private
   def user_params
     params.require(:user).permit(:nickname, :email, :birthday, :coin, :icon_ids)

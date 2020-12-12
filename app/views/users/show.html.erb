@@ -1,9 +1,13 @@
 <div class="main">
   <div class="inner">
+  <div class='star-btn' id="love_<%= @user.id %>">
+  <%= render "loves/love", user: @user %>
+  </div>
     <div class="user__wrapper">
-      <h2 class="page-heading">
+    <span class="user-skin"><%= image_tag(url_for(controller: :skins, action: :show, id: @user.icon_ids))%></span>
+      <b class="page-heading">
         <%= "#{@user.nickname}さんの情報"%>
-      </h2>
+      </b>
       <table class="table">
         <tbody>
           <tr>
@@ -24,6 +28,7 @@
           </tr>
         </tbody>
       </table>
+      <% if current_user.id == @user.id%>
       <a class="post" href="/users/<%=current_user.id%>/edit">
       編集
       </a>
@@ -49,6 +54,8 @@
        </div>
        <%end%>
        </div>
+
+       <%end%>
 
       <h2 class="page-heading">
         <%= "#{@user.nickname}さんの投稿"%>
