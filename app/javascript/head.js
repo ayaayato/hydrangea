@@ -119,12 +119,13 @@ $(function(){
 
 
         $(".select-icon").click(function(){
-          $(this).fadeTo(300, 0.7);
+          $(".select-icon").removeClass("selected-icon");
+          $(this).addClass("selected-icon");
           let iconId = $(this).attr('id');
           $("#icon-send").val(iconId);
         });
 
-        $(".flash").fadeOut(2500)
+        $(".flash").fadeOut(3500)
 
   });
 

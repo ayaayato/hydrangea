@@ -16,8 +16,8 @@ div {
 }
 
 body {
-  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN W3", sans-serif;
-  color: #3b4043;
+  font-family: sans-serif;
+  color: #4c4e50;
   background-color: rgb(251, 255, 255);
 }
 
@@ -33,6 +33,10 @@ img {
 a {
   text-decoration: none;
   color: #3b4043;
+}
+
+b {
+  font-family: sans-serif;
 }
 /*リセットcss*/
 
@@ -213,5 +217,16 @@ a {
   z-index: 1;
   margin: auto;
   width: 100vw;
-  background-color: rgb(179, 209, 255);
+  background-color: rgba(134, 217, 255, 0.507);
+}
+.select-icons{
+  display: flex;
+}
+
+.select-icon{
+  border-radius: 10px;
+}
+
+.selected-icon{
+  background-color: rgba(174, 255, 205, 0.5);
 }

@@ -26,6 +26,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params)
    if @user.save
+    flash[:success] = "変更しました"
       redirect_to user_path(@user.id)
    else
      render :edit
@@ -39,6 +40,7 @@ class UsersController < ApplicationController
     level_up = level + 1
     user.update(coin: level_up)
     if user.save
+      flash[:success] = "レベルが上がりました"
       redirect_to root_path
     end
   end

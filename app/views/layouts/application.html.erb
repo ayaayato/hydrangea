@@ -11,13 +11,13 @@
   </head>
 
   <body>
-  
+
   <div class="flash">
-  <span>
+  <b>
   <% flash.each do |message_type, message| %>
     <%= message %>
   <% end %>
-  </span>
+  </b>
   </div>
 
   <header class="header">
@@ -51,6 +51,7 @@
       <div class="right">
         <% if user_signed_in?%>
          <% if controller.controller_name == "flowers"%>
+         <% if controller.action_name == "index"%>
         <div class="new-btn btns">
         <!--<a class="post" href="/flowers/new">  newとseachはflowerルーティング以外では隠す-->
           <img src="/assets/new1.png" class="new-icon icons">
@@ -61,6 +62,7 @@
         <img src="/assets/seach1.png" class="seach-icon icons">
         <span class="balloon" id="seach-balloon"><b class="balloon-text">検索する</b></span>
         </div>
+        <%end%>
         <%end%>
         <%# if controller.controller_name != "skins"%>
         <div class="user-btn btns">
@@ -85,11 +87,14 @@
           </b>
         </div>
       <% if controller.controller_name == "flowers"%>
+      <% if controller.action_name == "index"%>
        <%if @level > current_user.coin%>
         <div class="level-btn btns">
          <%= link_to 'レベルアップ', "/users/#{current_user.id}/level", method: :patch %>
-          <span class="balloon" id="coin-balloon"><b class="balloon-text">レベルアップ</b></span>
+         <%image_tag "/assets/asagao.png"%>
+          <span class="balloon" id="coin-balloon"><b class="balloon-text">レベル</b></span>
         </div>
+        <%end%>
         <%end%>
         <%end%>
         
