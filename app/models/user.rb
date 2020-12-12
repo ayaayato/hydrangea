@@ -19,7 +19,26 @@ class User < ApplicationRecord
   has_many :favos
   has_many :orders
   has_many :skins, through: :orders
+  
+  has_many :loves
+  has_many :likings, through: :loves, source: :like
+  has_many :reverse_of_loves, class_name: 'Love', foreign_key: 'like_id'
+  has_many :likers, through: :reverse_of_loves, source: :user
 
+  def like(other_user)
+    unless self == other_user
+      self.loves.find_or_create_by(like_id: other_user.id)
+    end
+  end
+
+  def unlike(other_user)
+    love = self.loves.find_by(like_id: other_user.id)
+    love.destroy if love
+  end
+
+  def liking?(other_user)
+    self.likings.include?(other_user)
+  end
   
 
 end

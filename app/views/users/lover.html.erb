@@ -1,0 +1,12 @@
+<h1>お気に入りユーザー</h1>
+ <ul class='item-lists'>
+    <% @loves.each do |loves| %>
+      <li class='list'>
+        <%= link_to user_path(loves.id) do %>
+        <div class='item-info'>
+        <span class="user-skin"><%= image_tag(url_for(controller: :skins, action: :show, id: loves.icon_ids))%></span>
+          <b class='item-name'><%= loves.nickname %></b>
+        </div>
+        <% end %>
+      </li>
+     <% end%>

@@ -3,14 +3,14 @@ class Subcategory < ActiveHash::Base
   has_many :flowers
   self.data = [
     { id: 1, name: '--' },
-    { id: 2, name: '経済' },
-    { id: 3, name: '政治' },
-    { id: 4, name: '地域' },
-    { id: 5, name: '国際' },
-    { id: 6, name: 'IT' },
-    { id: 7, name: 'エンタメ' },
-    { id: 8, name: 'スポーツ' },
-    { id: 9, name: 'グルメ' },
+    { id: 2, name: '写真' },
+    { id: 3, name: 'イラスト' },
+    { id: 4, name: 'SS' },
+    { id: 5, name: '日常' },
+    { id: 6, name: '秘蔵' },
+    { id: 7, name: '逸品' },
+    { id: 8, name: '筋肉' },
+    { id: 9, name: '例のアレ' },
     { id: 10, name: 'その他' }
   ]
 end

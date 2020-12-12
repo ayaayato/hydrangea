@@ -1,0 +1,1 @@
+$('#love_<%= @user.id %>').html("<%= j(render partial: 'loves/love', locals: { user: @user }) %>");

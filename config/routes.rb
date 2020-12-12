@@ -15,8 +15,11 @@ Rails.application.routes.draw do
     patch :level
     patch :icon
     get   :favorite
+    get   :lover
   end
 end
+
+resources :loves, only: [:create, :destroy]
   
   root to: "flowers#index"
   resources :flowers do
