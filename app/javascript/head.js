@@ -124,6 +124,8 @@ $(function(){
           $("#icon-send").val(iconId);
         });
 
+        $(".flash").fadeOut(2500)
+
   });
 
   //切り出す

@@ -5,6 +5,9 @@ class FlowersController < ApplicationController
   before_action :exile_to_index, only: [:edit, :destroy]
 
 def index
+  levels = Flower.where(user_id: current_user.id)
+  level = levels.count
+  @level = level + 1
   @f = Flower.ransack(params[:q])
   @flowers = Flower.all.order("created_at DESC")
   @flower = FlowersTag.new
@@ -21,6 +24,7 @@ def create
   @flower = FlowersTag.new(flowers_params)
  if @flower.save
   #redirect_to controller: 'users', action: 'level', id: current_user.id
+  flash[:success] = "投稿しました"
   redirect_to root_path
  else
  redirect_to root_path

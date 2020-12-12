@@ -45,7 +45,6 @@ a {
   align-items: center;
   justify-content: space-between;
   border-bottom: solid 3px rgb(243, 245, 245);
-
 }
 .left{
   display: flex;
@@ -203,4 +202,16 @@ a {
     left: 0%;
     top: 80%;
     margin-top : 12px;
+}
+
+.flash{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  z-index: 0;
+  position: fixed;
+  z-index: 1;
+  margin: auto;
+  width: 100vw;
+  background-color: rgb(179, 209, 255);
 }

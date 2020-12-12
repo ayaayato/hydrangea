@@ -11,6 +11,14 @@
   </head>
 
   <body>
+  
+  <div class="flash">
+  <span>
+  <% flash.each do |message_type, message| %>
+    <%= message %>
+  <% end %>
+  </span>
+  </div>
 
   <header class="header">
       <div class="left">
@@ -76,11 +84,18 @@
           <%=current_user.coin %>
           </b>
         </div>
+      <% if controller.controller_name == "flowers"%>
+       <%if @level > current_user.coin%>
+        <div class="level-btn btns">
+         <%= link_to 'レベルアップ', "/users/#{current_user.id}/level", method: :patch %>
+          <span class="balloon" id="coin-balloon"><b class="balloon-text">レベルアップ</b></span>
+        </div>
+        <%end%>
+        <%end%>
+        
         <div class="exit-btn btns">
-        <!--<a class="post" href="/users/sign_out">-->
           <img src="/assets/exit1.png" class="exit-icon icons">
           <span class="exit-balloon" id="exit-balloon"><b class="balloon-text">ログアウト</b></span>
-          <!--  </a>-->
         </div>
           <% else %>
           <a class="post" href="/users/sign_in">
