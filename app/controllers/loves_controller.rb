@@ -4,6 +4,7 @@ class LovesController < ApplicationController
   def create
     liking = current_user.like(@user)
     if liking.save
+      flash[:success] = "ラブ！"
       redirect_to @user
     else
       redirect_to @user
@@ -13,6 +14,7 @@ class LovesController < ApplicationController
   def destroy
     liking = current_user.unlike(@user)
     if liking.destroy
+      flash[:success] = "さようなら・・・"
       redirect_to @user
     else
       redirect_to @user

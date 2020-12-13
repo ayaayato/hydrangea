@@ -1,10 +1,9 @@
 <h1>スキン購入</h1>
 
 <div>
-<%= image_tag(url_for(controller: :skins, action: :show, id: @skins.id))%>
+<%= image_tag(url_for(controller: :skins, action: :show, id: @skins.id),size: "30x30")%>
 
 <%= @skins.medal%>
-<%= current_user.id%>
 </div>
 
 <div>

@@ -27,6 +27,7 @@ def create
   flash[:success] = "投稿しました"
   redirect_to root_path
  else
+  flash[:danger] = "投稿できませんでした"
  redirect_to root_path
  end
 end

@@ -4,7 +4,7 @@
   <%= render "loves/love", user: @user %>
   </div>
     <div class="user__wrapper">
-    <span class="user-skin"><%= image_tag(url_for(controller: :skins, action: :show, id: @user.icon_ids))%></span>
+    <span class="user-skin"><%= image_tag(url_for(controller: :skins, action: :show, id: @user.icon_ids),size: "30x30")%></span>
       <b class="page-heading">
         <%= "#{@user.nickname}さんの情報"%>
       </b>
@@ -39,7 +39,7 @@
         <% @find.each do |skin|%>
         <div class="select-icon", id="<%=skin.skin_id%>">
         <span class="select-icon", id="<%=skin.skin_id%>">
-        <%= image_tag(url_for(controller: :skins, action: :show, id: skin.skin_id))%>
+        <%= image_tag(url_for(controller: :skins, action: :show, id: skin.skin_id),size: "30x30")%>
         <%= @names[skin.skin_id-1]['medal'] %>
         </span>
         </div>

@@ -97,15 +97,21 @@ b {
   justify-content: center;
   align-items: center;
   padding-top: 5px;
+  padding-right: 15px;
 }
 .coin-text{
   color: rgb(95, 95, 95);
   font-family: sans-serif;
   font-size: 24px;
 }
+.level-btn{
+  height: 30px;
+  width: 30px;
+  padding-top: 2px;
+}
 .exit-btn{
-  padding-left: 15px;
   padding-top: 5px;
+  padding-left: 15px;
 }
 
 .blue-icon{
@@ -125,8 +131,8 @@ b {
   width: 35px;
 }
 .coin-icon{
-  height: 30px;
-  width: 30px;
+  height: 35px;
+  width: 35px;
 }
 .seach-icon{
   height: 30px;
@@ -229,4 +235,21 @@ b {
 
 .selected-icon{
   background-color: rgba(174, 255, 205, 0.5);
+}
+
+.preview{
+  height: 50px;
+  width: 50px;
+}
+
+.previews{
+  height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.invisi{
+  display: none;
 }

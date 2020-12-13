@@ -3,7 +3,7 @@
 <div>
 <% (@count).times do |n|%>
   <span class="skin-icon", id="<%n+1%>">
-    <%= image_tag(url_for(controller: :skins, action: :show, id: n+1))%>
+    <%= image_tag(url_for(controller: :skins, action: :show, id: n+1),size: "30x30")%>
     <a href="/skins/<%=n+1%>/orders">
     <%= @name[n]['medal'] %>
     </a>

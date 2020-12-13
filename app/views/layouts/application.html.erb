@@ -68,7 +68,7 @@
         <div class="user-btn btns">
           <a class="post" href="/users/<%=current_user.id%>">
           <span class="user-icon">
-          <%= image_tag(url_for(controller: :skins, action: :show, id: current_user.icon_ids))%>
+          <%= image_tag(url_for(controller: :skins, action: :show, id: current_user.icon_ids),size: "30x30")%>
           </span>
           <span class="balloon" id="user-balloon"><b class="balloon-text">ユーザー情報</b></span>
           <b class="user-text">
@@ -79,20 +79,18 @@
         <%#end%>
         <div class="coin-btn btns">
          <a class="post" href="/skins">
-          <img src="/assets/coin2.png" class="coin-icon icons">
+          <img src="/assets/level5.png" class="coin-icon icons">
          </a>
-          <span class="balloon" id="coin-balloon"><b class="balloon-text">所持コイン</b></span>
-          <b class="coin-text">
-          <%=current_user.coin %>
-          </b>
+          <span class="balloon" id="coin-balloon"><b class="balloon-text">レベル <%=current_user.coin %></b></span>
         </div>
       <% if controller.controller_name == "flowers"%>
       <% if controller.action_name == "index"%>
        <%if @level > current_user.coin%>
         <div class="level-btn btns">
-         <%= link_to 'レベルアップ', "/users/#{current_user.id}/level", method: :patch %>
-         <%image_tag "/assets/asagao.png"%>
-          <span class="balloon" id="coin-balloon"><b class="balloon-text">レベル</b></span>
+         <%= link_to level_user_path(current_user.id), method: :patch do %>
+         <%=image_tag "/assets/levelup.png"%>
+         <%end%>
+          <span class="balloon" id="level-balloon"><b class="balloon-text">レベルup!</b></span>
         </div>
         <%end%>
         <%end%>
@@ -132,6 +130,9 @@
         </p>
         <%= f.file_field :image, id:"flower-image" %>
       </div>
+    </div>
+    <div class="previews">
+    <div id="image-list" class="preview"></div>
     </div>
 
     <div class="new-flower">
