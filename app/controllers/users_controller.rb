@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     @flowers = @user.flowers
     @find = Order.where(user_id: current_user.id)
     @names = Skin.all
+    @flowers = Flower.where(user_id: @user.id).order("created_at DESC")
   end
 
   #def create

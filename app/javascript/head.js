@@ -136,7 +136,16 @@ $(function(){
           $("#icon-send").val(iconId);
         });
 
-        $(".flash").fadeOut(3500)
+        $(".flash").fadeOut(3500);
+
+        $(".item-imgs").hover(
+          function(){
+            $(this).fadeTo(300, 0.7);
+          },
+          function(){
+            $(this).fadeTo(300, 1);
+          }
+          );
 
   });
 

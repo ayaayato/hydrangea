@@ -1,20 +1,24 @@
-<div class="main">
-<div class="item-show">
-  <div class="item-box">
+
+
+  <div class="show-box">
     <h2 class="name">
       <%= @flower.title %>
     </h2>
-    <div class='item-img-content'>
-      <%= image_tag(@flower.image, class:"item-box-img") %>
 
+    <div class="show-imgs">
+    <div class='show-img'>
+      <%= image_tag(@flower.image, class:"item-box-img") %>
+    </div>
     </div>
 
   <% if user_signed_in? && @flower.user.id == current_user.id%>
+    <div class="show-edit">
     <%= link_to '編集', edit_flower_path(@flower.id), method: :get, class: "item-red-btn" %>
     <p class='or-text'>or</p>
     <%= link_to '削除', flower_path(@flower.id), method: :delete, class:'item-destroy' %>
    <% elsif  user_signed_in? && @flower.user.id != current_user.id%>
     <%= link_to '仮リンク', root_path , method: :get, class:"item-red-btn"%>
+   </div>
   <% end %>
 
     <div class="item-explain-box">
@@ -34,11 +38,14 @@
           <th class="detail-item">カテゴリー2</th>
           <td class="detail-value"><%= @flower.subcategory.name %></td>
         </tr>
+        <tr>
+          <th class="detail-item">タグ</th>
+          <% @flower.tags.each do |tag| %>
+          <td class= 'badge badge-primary'><%= tag.name %></td>
+          <% end %>
+        </tr>
       </tbody>
     </table>
-    <% @flower.tags.each do |tag| %>
-    <span class= 'badge badge-primary'><%= tag.name %></span>
-    <% end %>
   </div>
 
 <%if current_user.id != @flower.user_id%>
@@ -47,4 +54,3 @@
 </div>
 <%end%>
 
-  </div>

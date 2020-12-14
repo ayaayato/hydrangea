@@ -5,15 +5,30 @@ class FlowersController < ApplicationController
   before_action :exile_to_index, only: [:edit, :destroy]
 
 def index
+  if user_signed_in?
   levels = Flower.where(user_id: current_user.id)
   level = levels.count
   @level = level + 1
-  @f = Flower.ransack(params[:q])
-  @flowers = Flower.all.order("created_at DESC")
+
+  if Love.find_by(user_id: current_user.id) != nil
+  loves = Love.find_by(user_id: current_user.id)
+  like = loves.like_id
+  user = User.where(id: like)
+  flowers = Flower.where(user_id: user).or(Flower.where(user_id: current_user.id))
+  @flowers = flowers.order("created_at DESC").includes(:user).limit(100)
+
+  #@flowers = Flower.all.order("created_at DESC")
   @flower = FlowersTag.new
-  respond_to do |format|
-    format.html
   end
+  end
+ 
+
+  @f = Flower.ransack(params[:q])
+
+  
+  #respond_to do |format|
+    #format.html
+  #end
 end
 
 def new #不用の為、最後に消す

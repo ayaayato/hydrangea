@@ -60,10 +60,38 @@
       <h2 class="page-heading">
         <%= "#{@user.nickname}さんの投稿"%>
       </h2>
-      <div class="user__card">
-        <%# 部分テンプレートでそのユーザーが投稿した投稿一覧を表示する %>
-        <%#= render partial: "prototypes/prototype", collection: @flowers%>
-      </div>
+
+      <% if user_signed_in?%>
+<%if @flowers != nil%>
+
+  <div class="inner">
+    <% @flowers.each do |flowers| %>
+      <div class="items">
+        <%= link_to flower_path(flowers.id) do %>
+        <div class='item-imgs'>
+
+          <%= image_tag(flowers.image, class: "item-img" ) %>
+
+        </div>
+        <p class='item-info'>
+            <%= flowers.title %>
+          </p>
+
+        <p class="item-time"><%=flowers.created_at.to_s(:datetime_jp)%></p>
+        
+      
+
+        <% end %>
+        </div>
+
+     <% end%>
+
+     <%else%>
+     <h1>投稿がまだありません</h1>
+     <%end%>
+  </div>
+<%end%>
+
     </div>
   </div>
 </div>
