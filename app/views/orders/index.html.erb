@@ -1,28 +1,31 @@
-<h1>スキン購入</h1>
+<h1 class="search-title">スキン詳細</h1>
 
-<div>
+<div class="skin-order">
+<div class="skin-icon skin-text">
 <%= image_tag(url_for(controller: :skins, action: :show, id: @skins.id),size: "30x30")%>
 
 <%= @skins.medal%>
 </div>
 
+<h4>必要レベル<%=@skins.cost%></h4>
+
 <div>
 <%if @find != nil%>
-  <h1>入手済み</h1>
+  <h3>入手済み</h3>
 <%else%>
 
   <% if current_user.coin >= @skins.cost%>
     <%= form_with url: "/skins/#{@skins.id}/orders", model: @order, local: true do |f| %>
     <div>
     <%= f.hidden_field :user_id, :value => current_user.id,readonly: true%>
-    <%= f.submit "購入する" ,class:"send-btn" %>
+    <%= f.submit "入手する" ,class:"send-btn" %>
     </div>
     <%end%>
 
   <%else%>
-    <div>
-    <h1>レベルが足りません</h1>
+    <h3>レベルが足りません</h3>
   <%end%>
 
 <%end%>
+</div>
 </div>

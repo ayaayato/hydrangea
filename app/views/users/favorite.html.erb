@@ -1,4 +1,5 @@
 <div class="inner">
+<% if @favos.count != 0%>
     <% @favos.each do |flowers| %>
       <div class="items">
         <%= link_to flower_path(flowers.id) do %>
@@ -18,3 +19,7 @@
         <% end %>
         </div>
      <% end%>
+<%else%>
+<h1>お気に入りがありません</h1>
+<%end%>
+</div>
