@@ -3,11 +3,11 @@
     <i class="fas fa-star star-icon1"></i>
     C
   <% end %>
-  <span class="star-count1"><%= flower.favos.count %></span>
+  <span class="star-count1"><%#= flower.favos.count %></span>
 <% else %>
   <%= link_to flower_favo_path(flower_id: flower.id, id: flower.favos[0].id), method: :delete, remote: true, class:"favo-btn" do %>
     <i class="fas fa-star star-icon2"></i>
     D
   <% end %>
-  <span class="star-count2"><%= flower.favos.count %></span>
+  <span class="star-count2"><%#= flower.favos.count %></span>
 <% end %>

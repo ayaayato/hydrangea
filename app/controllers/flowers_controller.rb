@@ -18,8 +18,11 @@ def index
   @flowers = flowers.order("created_at DESC").includes(:user).limit(100)
 
   #@flowers = Flower.all.order("created_at DESC")
-  @flower = FlowersTag.new
+  elsif Flower.find_by(user_id: current_user.id) != nil
+   flowers = Flower.where(user_id: current_user.id)
+   @flowers = flowers.order("created_at DESC").includes(:user).limit(100)
   end
+  @flower = FlowersTag.new
   end
  
 

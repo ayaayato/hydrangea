@@ -1,23 +1,28 @@
-<h1>
+<h1 class="search-title">
   検索結果
 </h1>
-<%# 検索結果の個数で条件分岐 %>
+
 <% if @results.length !=0 %>
-  <% @results.each do |result| %>
-    <td>
-    <br>
-    <div>
-      <%= result.title %>
-    </div>
-    <div>
-      <%= link_to flower_path(result.id) do %>
-      <%= image_tag(result.image, class: "item-img" ) %>
-    </div>
-      <%= result.category_id %>
-      <%end%>
+
+
+  <div class="inner">
+    <% @results.each do |flowers| %>
+      <div class="items">
+        <%= link_to flower_path(flowers.id) do %>
+        <div class='item-imgs'>
+
+          <%= image_tag(flowers.image, class: "item-img" ) %>
+
+        </div>
+        <p class='item-info'><%= flowers.title %></p>
+        
+        <p class="item-user">
+        <%=flowers.user.nickname%></p>
+        <p class="item-time"><%=flowers.created_at.to_s(:datetime_jp)%></p>
+  <%end%>
+  </div>
   <% end %>
 <% else %>
-  該当する投稿はありません
+ <h3 class="search-title">該当する投稿はありません</h3>
 <% end %>
-<br>
-<%= link_to 'トップページへ戻る', root_path %>
+</div>

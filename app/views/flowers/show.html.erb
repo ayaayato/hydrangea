@@ -1,56 +1,50 @@
+<div class="show-inner">
 
-
-  <div class="show-box">
-    <h2 class="name">
+  <div class="show-items">
+    <h2 class="show-content">
       <%= @flower.title %>
     </h2>
 
     <div class="show-imgs">
-    <div class='show-img'>
-      <%= image_tag(@flower.image, class:"item-box-img") %>
+      <%= image_tag(@flower.image, class: "show-img") %>
     </div>
-    </div>
+    <%if current_user.id != @flower.user_id%>
+      <div class='star-btn' id="favo_<%= @flower.id %>">
+      <%= render "favos/favo", flower: @flower %>
+      </div>
+    <%end%>
 
-  <% if user_signed_in? && @flower.user.id == current_user.id%>
-    <div class="show-edit">
-    <%= link_to '編集', edit_flower_path(@flower.id), method: :get, class: "item-red-btn" %>
-    <p class='or-text'>or</p>
-    <%= link_to '削除', flower_path(@flower.id), method: :delete, class:'item-destroy' %>
-   <% elsif  user_signed_in? && @flower.user.id != current_user.id%>
-    <%= link_to '仮リンク', root_path , method: :get, class:"item-red-btn"%>
+    <div class="show-content">
+      <span><%= image_tag(url_for(controller: :skins, action: :show, id: @flower.user.icon_ids),size: "30x30")%></span>
+      <a href="/users/<%=@flower.user.id%>"><%= @flower.user.nickname %></a>
+      <div>
+       <b>場所</b>
+       <span><%= @flower.place %></span>
+       </div>
+
+        <div>
+          <b class="detail-item">カテゴリー</b>
+          <span class="detail-value"><%= @flower.category.name %></span>
+        </div>
+        <div>
+          <b class="detail-item">カテゴリー2</b>
+          <span class="detail-value"><%= @flower.subcategory.name %></span>
+        </div>
+        <div>
+          <b class="detail-item">タグ</b>
+          <% @flower.tags.each do |tag| %>
+          <span class= 'badge badge-primary'><%= tag.name %></span>
+          <% end %>
+        </div>
+  </div>
+
+    <% if user_signed_in? && @flower.user.id == current_user.id%>
+    <div class="show-content">
+    <span><%= link_to '編集', edit_flower_path(@flower.id), method: :get, class: "item-red-btn" %></span>
+    <span class='or-text'>or</span>
+    <span><%= link_to '削除', flower_path(@flower.id), method: :delete, class:'item-destroy' %></span>
    </div>
   <% end %>
 
-    <div class="item-explain-box">
-      <span><%= @flower.place %></span>
-    </div>
-    <table class="detail-table">
-      <tbody>
-        <tr>
-          <th class="detail-item">ユーザー</th>
-          <td class="detail-value"><%= @flower.user.nickname %></td>
-        </tr>
-        <tr>
-          <th class="detail-item">カテゴリー</th>
-          <td class="detail-value"><%= @flower.category.name %></td>
-        </tr>
-        <tr>
-          <th class="detail-item">カテゴリー2</th>
-          <td class="detail-value"><%= @flower.subcategory.name %></td>
-        </tr>
-        <tr>
-          <th class="detail-item">タグ</th>
-          <% @flower.tags.each do |tag| %>
-          <td class= 'badge badge-primary'><%= tag.name %></td>
-          <% end %>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-<%if current_user.id != @flower.user_id%>
-<div class='star-btn' id="favo_<%= @flower.id %>">
-  <%= render "favos/favo", flower: @flower %>
 </div>
-<%end%>
 
