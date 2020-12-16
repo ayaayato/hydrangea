@@ -16,8 +16,6 @@ def index
   user = User.where(id: like)
   flowers = Flower.where(user_id: user).or(Flower.where(user_id: current_user.id))
   @flowers = flowers.order("created_at DESC").includes(:user).limit(100)
-
-  #@flowers = Flower.all.order("created_at DESC")
   elsif Flower.find_by(user_id: current_user.id) != nil
    flowers = Flower.where(user_id: current_user.id)
    @flowers = flowers.order("created_at DESC").includes(:user).limit(100)
@@ -28,10 +26,6 @@ def index
 
   @f = Flower.ransack(params[:q])
 
-  
-  #respond_to do |format|
-    #format.html
-  #end
 end
 
 def new #不用の為、最後に消す
@@ -41,7 +35,6 @@ end
 def create
   @flower = FlowersTag.new(flowers_params)
  if @flower.save
-  #redirect_to controller: 'users', action: 'level', id: current_user.id
   flash[:success] = "投稿しました"
   redirect_to root_path
  else
@@ -62,30 +55,11 @@ end
 
 def edit
   @flower = Flower.find(params[:id])
-  #@tag = FlowersTag.new(flower: @flower)
-  #flower_id = flower.id
-  #tag_id = FlowerTagRelation.find_by(flower_id: flower_id)
-  #tag = Tag.find_by(id: tag_id)
-  #name = tag.name
-  #@flower = FlowerTagRelation.find_by(flower_id: flower_id).flower
-  #@tags = FlowerTagRelation.find_by(flower_id: flower_id).tag
 end
 
 def update
    @flower.update(flower_params)
-   #@tag = FlowersTag.new(flower_params, flower: @flower)
-   #tag_list = params[:flower][:name].split(",")
-    #if @tag.valid?
-      #@tag.save(tag_list)
-      #return redirect_to flower_path(@flower.id)
-    #else
-     # render :edit
-    #end
-#   if @flower.save
   redirect_to root_path
-#else
-# render :edit
-#end
 end
 
 def destroy
@@ -93,9 +67,6 @@ def destroy
     if @flower.destroy
       redirect_to root_path
     end
-  #@flower = Flower.find(params[:id])
-  #@flower.destroy
-  #redirect_to root_path
 end
 
 def search
