@@ -40,9 +40,13 @@
 
     <% if user_signed_in? && @flower.user.id == current_user.id%>
     <div class="show-content">
-    <span><%= link_to '編集', edit_flower_path(@flower.id), method: :get, class: "item-red-btn" %></span>
+    <%= link_to edit_flower_path(@flower.id), method: :get, class: "item-red-btn" do%>
+    <img src="/assets/edit.png" class="exit-icon icons">
+    <%end%>
     <span class='or-text'>or</span>
-    <span><%= link_to '削除', flower_path(@flower.id), method: :delete, class:'item-destroy' %></span>
+    <%= link_to flower_path(@flower.id), method: :delete, class:'item-destroy' do%>
+    <img src="/assets/gomi.png" class="exit-icon icons">
+    <%end%>
    </div>
   <% end %>
 

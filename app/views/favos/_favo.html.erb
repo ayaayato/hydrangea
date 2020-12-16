@@ -1,13 +1,11 @@
 <% if !Favo.exists?(user_id: current_user.id, flower_id: flower.id) %>
   <%= link_to flower_favos_path(flower.id), method: :post, remote: true, class:"favo-btn" do %>
-    <i class="fas fa-star star-icon1"></i>
-    C
+    <img src="/assets/unfavo.png" class="exit-icon icons">
   <% end %>
   <span class="star-count1"><%#= flower.favos.count %></span>
 <% else %>
   <%= link_to flower_favo_path(flower_id: flower.id, id: flower.favos[0].id), method: :delete, remote: true, class:"favo-btn" do %>
-    <i class="fas fa-star star-icon2"></i>
-    D
+    <img src="/assets/favo.png" class="exit-icon icons">
   <% end %>
   <span class="star-count2"><%#= flower.favos.count %></span>
 <% end %>
