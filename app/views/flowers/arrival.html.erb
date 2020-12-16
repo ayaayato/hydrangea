@@ -1,0 +1,26 @@
+<%if @flowers != nil%>
+  <h1 class="search-title">新着投稿</h1>
+  <div class="inner">
+    <% @flowers.each do |flowers| %>
+      <div class="items">
+        <%= link_to flower_path(flowers.id) do %>
+        <div class='item-imgs'>
+
+          <%= image_tag(flowers.image, class: "item-img" ) %>
+
+        </div>
+        <p class='item-info'><%= flowers.title %></p>
+        
+        <p class="item-user">
+        <%=flowers.user.nickname%></p>
+        <p class="item-time"><%=flowers.created_at.to_s(:datetime_jp)%></p>
+        
+      
+
+        <% end %>
+        </div>
+     <% end%>
+
+     <%else%>
+     <h1 class="search-title">投稿がありません</h1>
+     <%end%>

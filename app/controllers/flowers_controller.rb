@@ -103,6 +103,10 @@ def search
   @results = @f.result
 end
 
+def arrival
+  @flowers = Flower.all.order("created_at DESC").includes(:user).limit(100)
+end
+
 private
 
 def flower_params

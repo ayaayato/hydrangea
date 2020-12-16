@@ -388,7 +388,7 @@ border-bottom: solid 1px rgb(223, 223, 223);
   flex-wrap: wrap;
 }
 .skins{
-  margin-right: 10px;
+  margin-right: 15px;
 }
 .skin-text{
   color: #636363;
@@ -402,4 +402,18 @@ border-bottom: solid 1px rgb(223, 223, 223);
   width: 80vw;
   align-items: center;
   margin-top: 20px;
+}
+
+.edit-inner{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.devise-inner{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
