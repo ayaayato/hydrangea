@@ -29,7 +29,6 @@ def index
 end
 
 def new #不用の為、最後に消す
-  @flower = Flower.new
 end
 
 def create
