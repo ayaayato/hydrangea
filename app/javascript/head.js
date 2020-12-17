@@ -147,6 +147,25 @@ $(function(){
           }
           );
 
+
+        $(window).scroll(function() {
+          $('.top-texts').css({
+            'opacity': '0',
+            'transform': 'translateX(30px)'
+          });
+          let scroll = $(window).scrollTop();
+          let windowHeight = $(window).height();
+          $('.top-texts').each(function() {
+            let elemPos = $(this).offset().top;
+            if (scroll > elemPos - windowHeight + 100) {
+              $(this).css({
+                'opacity': '1',
+                'transform': 'translateX(0)'
+              });
+            }
+          });
+        });
+
   });
 
   //切り出す
