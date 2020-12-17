@@ -12,6 +12,14 @@
 
   <body>
 
+  <div class="flash">
+  <b>
+  <% flash.each do |message_type, message| %>
+    <%= message %>
+  <% end %>
+  </b>
+  </div>
+
   <header class="header">
       <div class="left">
         <div class="index-btn">
@@ -33,7 +41,7 @@
          <div class="fav-userbtn btns">
           <a href="/users/<%=current_user.id%>/lover">
           <img src="/assets/r1.png" class="fav-icon icons">
-          <span class="balloon" id="fav-user-balloon"><b class="balloon-text">フォロー</b></span>
+          <span class="balloon" id="fav-user-balloon"><b class="balloon-text">LOVER</b></span>
           </a>
          </div>
         </div>
@@ -43,6 +51,7 @@
       <div class="right">
         <% if user_signed_in?%>
          <% if controller.controller_name == "flowers"%>
+         <% if controller.action_name == "index"%>
         <div class="new-btn btns">
         <!--<a class="post" href="/flowers/new">  newとseachはflowerルーティング以外では隠す-->
           <img src="/assets/new1.png" class="new-icon icons">
@@ -54,11 +63,12 @@
         <span class="balloon" id="seach-balloon"><b class="balloon-text">検索する</b></span>
         </div>
         <%end%>
+        <%end%>
         <%# if controller.controller_name != "skins"%>
         <div class="user-btn btns">
           <a class="post" href="/users/<%=current_user.id%>">
           <span class="user-icon">
-          <%= image_tag(url_for(controller: :skins, action: :show, id: current_user.icon_ids))%>
+          <%= image_tag(url_for(controller: :skins, action: :show, id: current_user.icon_ids),size: "30x30")%>
           </span>
           <span class="balloon" id="user-balloon"><b class="balloon-text">ユーザー情報</b></span>
           <b class="user-text">
@@ -69,25 +79,33 @@
         <%#end%>
         <div class="coin-btn btns">
          <a class="post" href="/skins">
-          <img src="/assets/coin2.png" class="coin-icon icons">
+          <img src="/assets/level5.png" class="coin-icon icons">
          </a>
-          <span class="balloon" id="coin-balloon"><b class="balloon-text">所持コイン</b></span>
-          <b class="coin-text">
-          <%=current_user.coin %>
-          </b>
+          <span class="balloon" id="coin-balloon"><b class="balloon-text">レベル <%=current_user.coin %></b></span>
         </div>
+      <% if controller.controller_name == "flowers"%>
+      <% if controller.action_name == "index"%>
+       <%if @level > current_user.coin%>
+        <div class="level-btn btns">
+         <%= link_to level_user_path(current_user.id), method: :patch do %>
+         <%=image_tag "/assets/levelup.png"%>
+         <%end%>
+          <span class="balloon" id="level-balloon"><b class="balloon-text">レベルup!</b></span>
+        </div>
+        <%end%>
+        <%end%>
+        <%end%>
+        
         <div class="exit-btn btns">
-        <!--<a class="post" href="/users/sign_out">-->
           <img src="/assets/exit1.png" class="exit-icon icons">
           <span class="exit-balloon" id="exit-balloon"><b class="balloon-text">ログアウト</b></span>
-          <!--  </a>-->
         </div>
           <% else %>
           <a class="post" href="/users/sign_in">
-          ログイン
+          <h3 class="login-text logins">ログイン</h3>
           </a>
           <a class="post" href="/users/sign_up">
-          新規登録
+          <h3 class="logins">新規登録</h3>
           </a>
           <%end%>
        </div>
@@ -104,7 +122,7 @@
     <div class="img-upload">
       <div class="weight-bold-text">
         画像
-        <span class="indispensable">必須</span>
+        <span class="indispensable">（必須）</span>
       </div>
       <div class="click-upload">
         <p>
@@ -113,17 +131,20 @@
         <%= f.file_field :image, id:"flower-image" %>
       </div>
     </div>
+    <div class="previews">
+    <div id="image-list" class="preview"></div>
+    </div>
 
     <div class="new-flower">
       <div class="weight-bold-text">
         題名
-        <span class="indispensable">必須</span>
+        <span class="indispensable">（必須）</span>
       </div>
       <%= f.text_area :title, class:"flower-text", id:"flower-name", placeholder:"題名", maxlength:"20" %>
       <div class="flower-explain">
         <div class="weight-bold-text">
           場所
-          <span class="indispensable">任意</span>
+          <span class="indispensable">（任意）</span>
         </div>
         <%= f.text_area :place, class:"flower-text", id:"flower-info", placeholder:"場所" ,maxlength:"20" %>
       </div>
@@ -134,12 +155,12 @@
       <div class="form">
         <div class="weight-bold-text">
           カテゴリー
-          <span class="indispensable">必須</span>
+          <span class="indispensable">（必須）</span>
         </div>
         <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"flower-category"}) %>
         <div class="weight-bold-text">
           カテゴリー2
-          <span class="indispensable">必須</span>
+          <span class="indispensable">（必須）</span>
         </div>
         <%= f.collection_select(:subcategory_id, Subcategory.all, :id, :name, {}, {class:"select-box", id:"flower-subcategory"}) %>
       </div>
@@ -151,9 +172,9 @@
     </div>
     <div id="ajax-result">
     </div>
-
+    <br>
     <div class="send-btn-contents">
-      <%= f.submit "投稿する" ,class:"sell-btn" %>
+      <%= f.submit "投稿する" ,class:"submit-btn button" %>
     </div>
 
   <% end %>

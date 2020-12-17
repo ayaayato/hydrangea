@@ -1,3 +1,4 @@
+<div class="devise-inner">
 <h2 class="flower-new-title">ユーザー編集</h2>
     <%= form_with(model: @user, local: true) do |f| %>
 
@@ -8,35 +9,14 @@
   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">ニックネーム</label>
-      <span class="indispensable">必須</span>
     </div>
     <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) furima太郎", maxlength:"40" %>
   </div>
-
- <div>
-  <span class="skin-icon">
-    <%= image_tag(url_for(controller: :skins, action: :show, id: 1))%>
-  </span>
-  <span class="skin-icon">
-    <%= image_tag(url_for(controller: :skins, action: :show, id: 2))%>
-  </span>
- </div>
- <div>
-<% @find.each do |skin|%>
-  <span class="skin-icon", id="<%skin.skin_id%>">
-    <%= image_tag(url_for(controller: :skins, action: :show, id: skin.skin_id))%>
-
-    <%= @name[skin.skin_id-1]['medal'] %>
-    </a>
-  </span>
-<% end %>
-</div>
 
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
   <% end %>
 
-
-
 <%= link_to "Back", :back %>
+</div>

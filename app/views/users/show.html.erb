@@ -1,46 +1,28 @@
 <div class="main">
-  <div class="inner">
+  <div class="user-inner">
   <div class='star-btn' id="love_<%= @user.id %>">
   <%= render "loves/love", user: @user %>
   </div>
-    <div class="user__wrapper">
-    <span class="user-skin"><%= image_tag(url_for(controller: :skins, action: :show, id: @user.icon_ids))%></span>
+    <div class="user-wrapper">
+    <div>
+    <span class="user-skin"><%= image_tag(url_for(controller: :skins, action: :show, id: @user.icon_ids),size: "30x30")%></span>
       <b class="page-heading">
-        <%= "#{@user.nickname}さんの情報"%>
+        <%= "#{@user.nickname}さんのページ"%>
       </b>
-      <table class="table">
-        <tbody>
-          <tr>
-            <th class="table__col1">名前</th>
-            <td class="table__col2"><%= @user.nickname %></td>
-          </tr>
-          <tr>
-            <th class="table__col1">プロフィール</th>
-            <td class="table__col2"><%= @user.nickname %></td>
-          </tr>
-          <tr>
-            <th class="table__col1">所属</th>
-            <td class="table__col2"><%= @user.nickname %></td>
-          </tr>
-          <tr>
-            <th class="table__col1">役職</th>
-            <td class="table__col2"><%= @user.nickname %></td>
-          </tr>
-        </tbody>
-      </table>
+      </div>
+
       <% if current_user.id == @user.id%>
       <a class="post" href="/users/<%=current_user.id%>/edit">
-      編集
+      <img src="/assets/config.png" class="exit-icon icons">
       </a>
-      <%= link_to 'レベルアップ', "/users/#{current_user.id}/level", method: :patch %>
 
        <h1>所持スキン</h1>
-       <div>
+       <div class="select-icons">
         <% @find.each do |skin|%>
-        <div class="select-icon", id="<%=skin.skin_id%>">
+        <div class="select-icon skins", id="<%=skin.skin_id%>">
         <span class="select-icon", id="<%=skin.skin_id%>">
-        <%= image_tag(url_for(controller: :skins, action: :show, id: skin.skin_id))%>
-        <%= @names[skin.skin_id-1]['medal'] %>
+        <%= image_tag(url_for(controller: :skins, action: :show, id: skin.skin_id),size: "30x30")%>
+        <span class="skin-text"><%= @names[skin.skin_id-1]['medal'] %></span>
         </span>
         </div>
         <% end %>
@@ -50,20 +32,49 @@
        <%= form_with url: "/users/#{@user.id}/icon", model: @user, local: true do |f| %>
        <div>
        <%= f.hidden_field :icon_ids, value: 1, id: "icon-send", readonly: true %>
-       <%= f.submit "決定" ,class:"send-btn" %>
+       <br>
+       <%= f.submit "決定" ,class:"send-btn button" %>
        </div>
        <%end%>
        </div>
 
        <%end%>
-
+      <br>
       <h2 class="page-heading">
         <%= "#{@user.nickname}さんの投稿"%>
       </h2>
-      <div class="user__card">
-        <%# 部分テンプレートでそのユーザーが投稿した投稿一覧を表示する %>
-        <%#= render partial: "prototypes/prototype", collection: @flowers%>
-      </div>
+
+      <% if user_signed_in?%>
+<%if @flowers != nil%>
+
+  <div class="inner">
+    <% @flowers.each do |flowers| %>
+      <div class="items">
+        <%= link_to flower_path(flowers.id) do %>
+        <div class='item-imgs'>
+
+          <%= image_tag(flowers.image, class: "item-img" ) %>
+
+        </div>
+        <p class='item-info'>
+            <%= flowers.title %>
+          </p>
+
+        <p class="item-time"><%=flowers.created_at.to_s(:datetime_jp)%></p>
+        
+      
+
+        <% end %>
+        </div>
+
+     <% end%>
+
+     <%else%>
+     <h1>投稿がまだありません</h1>
+     <%end%>
+  </div>
+<%end%>
+
     </div>
   </div>
 </div>

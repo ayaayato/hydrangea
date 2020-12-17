@@ -49,6 +49,17 @@ $(function(){
         $("#user-balloon").fadeOut(200);
       });
 
+      $(".level-btn").hover(
+        function(){
+          $(this).fadeTo(300, 0.6);
+          $("#level-balloon").fadeIn();
+        },
+        function(){
+          $(this).fadeTo(300, 1);
+          $("#level-balloon").fadeOut(200);
+        });
+
+
     $(".coin-btn").hover(
       function(){
         $("#coin-balloon").fadeIn();
@@ -119,43 +130,44 @@ $(function(){
 
 
         $(".select-icon").click(function(){
-          $(this).fadeTo(300, 0.7);
+          $(".select-icon").removeClass("selected-icon");
+          $(this).addClass("selected-icon");
           let iconId = $(this).attr('id');
           $("#icon-send").val(iconId);
+        });
+
+        $(".flash").fadeOut(3500);
+
+        $(".item-imgs").hover(
+          function(){
+            $(this).fadeTo(300, 0.7);
+          },
+          function(){
+            $(this).fadeTo(300, 1);
+          }
+          );
+
+
+        $(window).scroll(function() {
+          $('.top-texts').css({
+            'opacity': '0',
+            'transform': 'translateX(30px)'
+          });
+          let scroll = $(window).scrollTop();
+          let windowHeight = $(window).height();
+          $('.top-texts').each(function() {
+            let elemPos = $(this).offset().top;
+            if (scroll > elemPos - windowHeight + 100) {
+              $(this).css({
+                'opacity': '1',
+                'transform': 'translateX(0)'
+              });
+            }
+          });
         });
 
   });
 
   //切り出す
-  if (location.pathname.match("/")){
-    document.addEventListener("DOMContentLoaded", () => {
-      const inputElement = document.getElementById("flowers_tag_name");
-      inputElement.addEventListener("keyup", () => {
-        const keyword = document.getElementById("flowers_tag_name").value;
-        const XHR = new XMLHttpRequest();
-        XHR.open("GET", `/flowers/ajax/?keyword=${keyword}`, true);
-        XHR.responseType = "json";
-        XHR.send();
-        XHR.onload = () => {
-          const searchResult = document.getElementById("ajax-result");
-          searchResult.innerHTML = "";
-          if (XHR.response) {
-            const tagName = XHR.response.keyword;
-            tagName.forEach((tag) => {
-              const childElement = document.createElement("div");
-              childElement.setAttribute("class", "child");
-              childElement.setAttribute("id", tag.id);
-              childElement.innerHTML = tag.name;
-              searchResult.appendChild(childElement);
-              const clickElement = document.getElementById(tag.id);
-              clickElement.addEventListener("click", () => {
-                document.getElementById("flowers_tag_name").value = clickElement.textContent;
-                clickElement.remove();
-              });
-            });
-          };
-        };
-      });
-    });
-  };
+
   //切り出す

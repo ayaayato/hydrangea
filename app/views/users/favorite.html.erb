@@ -1,16 +1,25 @@
-<h1>お気に入り</h1>
- <ul class='item-lists'>
+<div class="inner">
+<% if @favos.count != 0%>
     <% @favos.each do |flowers| %>
-      <li class='list'>
+      <div class="items">
         <%= link_to flower_path(flowers.id) do %>
-        <div class='item-img-content'>
+        <div class='item-imgs'>
+
           <%= image_tag(flowers.image, class: "item-img" ) %>
+
         </div>
-        <div class='item-info'>
-          <h3 class='item-name'>
-            <%= flowers.title %>
-          </h3>
-        </div>
+        <p class='item-info'><%= flowers.title %></p>
+        
+        <p class="item-user">
+        <%=flowers.user.nickname%></p>
+        <p class="item-time"><%=flowers.created_at.to_s(:datetime_jp)%></p>
+        
+      
+
         <% end %>
-      </li>
+        </div>
      <% end%>
+<%else%>
+<h1>お気に入りがありません</h1>
+<%end%>
+</div>

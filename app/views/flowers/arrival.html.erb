@@ -1,12 +1,7 @@
-<h1 class="search-title">
-  検索結果
-</h1>
-
-<% if @results.length !=0 %>
-
-
+<%if @flowers != nil%>
+  <h1 class="search-title">新着投稿</h1>
   <div class="inner">
-    <% @results.each do |flowers| %>
+    <% @flowers.each do |flowers| %>
       <div class="items">
         <%= link_to flower_path(flowers.id) do %>
         <div class='item-imgs'>
@@ -19,10 +14,13 @@
         <p class="item-user">
         <%=flowers.user.nickname%></p>
         <p class="item-time"><%=flowers.created_at.to_s(:datetime_jp)%></p>
-  <%end%>
-  </div>
-  <% end %>
-<% else %>
- <h3 class="search-title">該当する投稿はありません</h3>
-<% end %>
-</div>
+        
+      
+
+        <% end %>
+        </div>
+     <% end%>
+
+     <%else%>
+     <h1 class="search-title">投稿がありません</h1>
+     <%end%>

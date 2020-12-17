@@ -1,6 +1,8 @@
 
-    <h2 class="flower-new-title">商品の情報を入力</h2>
-    <%= form_with(model: [@flower], url: "/flowers/#{@flower.id}",local: true) do |f| %>
+
+    <h2 class="search-title">編集</h2>
+    <div class="edit-inner">
+    <%= form_with(model: [@flower], url: "/flowers/#{@flower.id}", local: true) do |f| %>
 
     <div class="img-upload">
       <div class="weight-bold-text">
@@ -13,6 +15,9 @@
         </p>
         <%= f.file_field :image, id:"flower-image" %>
       </div>
+    </div>
+    <div class="previews">
+    <div id="image-list" class="preview"></div>
     </div>
 
     <div class="new-flower">
@@ -45,18 +50,10 @@
         <%= f.collection_select(:subcategory_id, Subcategory.all, :id, :name, {}, {class:"select-box", id:"flower-subcategory"}) %>
       </div>
     </div>
-
-    <div class="tag-field", id='tag-field'>
-      <%= f.label :name, "タグ" %>
-      <%= f.text_field :name, class:"input-tag" %>
-    </div>
-    <div id="ajax-result">
-    </div>
-
-
+    <br>
     <div class="send-btn-contents">
-      <%= f.submit "投稿する" ,class:"sell-btn" %>
-      <%=link_to 'もどる', root_path, class:"back-btn" %>
+      <%= f.submit "編集する" ,class:"submit-btn button" %>
     </div>
 
   <% end %>
+  </div>

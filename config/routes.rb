@@ -26,6 +26,7 @@ resources :loves, only: [:create, :destroy]
     collection do
       get :search
       get :ajax
+      get :arrival
     end
     resources :favos, only: [:create, :destroy]
   end
