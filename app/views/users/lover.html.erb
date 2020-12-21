@@ -2,6 +2,7 @@
  <h1>愛しているユーザー</h1>
  <ul class='item-lists'>
     <% @loves.each do |loves| %>
+    <br>
       <li class='list'>
         <%= link_to user_path(loves.id) do %>
         <div class='item-info'>

@@ -11,8 +11,8 @@ def index
   @level = level + 1
 
   if Love.find_by(user_id: current_user.id) != nil
-  loves = Love.find_by(user_id: current_user.id)
-  like = loves.like_id
+  like = Love.where(user_id: current_user.id).pluck(:like_id)
+
   user = User.where(id: like)
   flowers = Flower.where(user_id: user).or(Flower.where(user_id: current_user.id))
   @flowers = flowers.order("created_at DESC").includes(:user).limit(100)
