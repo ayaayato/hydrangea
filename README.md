@@ -9,12 +9,15 @@
 | nickname             | string     | null: false       |
 | birthday             | date       | null: false       |
 | coin                 | integer    | null: false       |
-| skin                 | references | foreign_key: true |
+| icon_ids             | integer    | null: false       |
 
 ### Association
 
 - has_many :flowers
-- belongs_to :skin
+- belongs_to :skin, through: :orders
+- has_many :favos
+- has_many :orders
+- has_many :loves
 
 
 ## flowers テーブル
@@ -31,8 +34,9 @@
 ### Association
 
 - belongs_to :user
-- has_many :flower_tag_relations
+- has_many :flower_tag_relations, dependent: :destroy
 - has_many :tags, through: :flower_tag_relations
+- has_many :favos, dependent: :destroy
 
 
 ## skins テーブル
@@ -47,7 +51,8 @@
 
 ### Association
 
-- has_many :users
+- has_many :users, through: :orders
+- has_many :orders
 
 
 ## tags テーブル
@@ -74,3 +79,43 @@
 
 - belongs_to :flower
 - belongs_to :tag
+
+
+## orders テーブル
+
+| Column      | Type       | Options           |
+| ----------- | ---------- | ----------------- |
+| user        | references | foreign_key: true |
+| skin        | references | foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :skin
+
+
+## loves テーブル
+
+| Column      | Type       | Options                |
+| ----------- | ---------- | ---------------------- |
+| user        | references | foreign_key: true      |
+| like        | references | foreign_key: 'like_id' |
+
+### Association
+
+- belongs_to :user
+- belongs_to :like, class_name: 'User'
+
+
+## favos テーブル
+
+| Column      | Type       | Options           |
+| ----------- | ---------- | ----------------- |
+| user        | references | foreign_key: true |
+| flower      | references | foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :flower
+
