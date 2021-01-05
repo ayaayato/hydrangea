@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
     #binding.pry
     @order = Order.new(order_params)
     if @order.save
+      flash[:success] = "入手しました"
       redirect_to root_path
     end
   end

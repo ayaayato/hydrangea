@@ -38,7 +38,7 @@ def create
   redirect_to root_path
  else
   flash[:danger] = "投稿できませんでした"
- redirect_to root_path
+  redirect_to root_path
  end
 end
 

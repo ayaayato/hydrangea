@@ -115,6 +115,10 @@ $(function(){
         $("#seach-modal").fadeIn();
       });
 
+      $(".destroy-btn").click(function(){
+        $("#destroy-modal").fadeIn();
+      });
+
       //$(".show-btn").click(function(){
         //$("#show-modal").fadeIn();
       //});
@@ -125,6 +129,7 @@ $(function(){
         $("#login-modal").fadeOut();
         $("#exit-modal").fadeOut();
         $("#seach-modal").fadeOut();
+        $("#destroy-modal").fadeOut();
       });
     
 

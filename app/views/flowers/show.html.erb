@@ -44,9 +44,25 @@
     <img src="/assets/edit.png" class="exit-icon icons">
     <%end%>
     <span class='or-text'>or</span>
-    <%= link_to flower_path(@flower.id), method: :delete, class:'item-destroy' do%>
-    <img src="/assets/gomi.png" class="exit-icon icons">
-    <%end%>
+
+    <img src="/assets/gomi.png" class="exit-icon icons destroy-btn">
+
+    <div class="modal-wrapper" id = "destroy-modal">
+    <div class="modal">
+     <h2>削除しますか？</h2>
+     <br>
+     <%= link_to flower_path(@flower.id), method: :delete, class:'item-destroy' do%>
+     <p>はい</p>
+     <%end%>
+     <br>
+     <p class="close-modal">いいえ</p>
+      <div class = "close-modal">
+        <img src="/assets/close1.png" class="close-icon icons">
+      </div>
+
+    </div>
+  </div>
+
    </div>
   <% end %>
 

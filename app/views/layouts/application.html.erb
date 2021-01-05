@@ -104,9 +104,9 @@
           <a class="post" href="/users/sign_in">
           <h3 class="login-text logins">ログイン</h3>
           </a>
-          <a class="post" href="/users/sign_up">
+          <%= link_to new_user_registration_path do %>
           <h3 class="logins">新規登録</h3>
-          </a>
+          <%end%>
           <%end%>
        </div>
     </header>
@@ -116,7 +116,7 @@
       <div id="new-form">
 
         <!-- new  renderにする-->
-      <h2 class="flower-new-title">投稿する</h2>
+      <h2 class="flower-new-title">新規投稿</h2>
     <%= form_with(model: @flower, url: flowers_path, local: true) do |f| %>
 
     <div class="img-upload">
@@ -140,18 +140,18 @@
         題名
         <span class="indispensable">（必須）</span>
       </div>
-      <%= f.text_area :title, class:"flower-text", id:"flower-name", placeholder:"題名", maxlength:"20" %>
+      <%= f.text_area :title, class:"flower-text", id:"flower-name", placeholder:"15文字以下", maxlength:"15" %>
       <div class="flower-explain">
         <div class="weight-bold-text">
           場所
           <span class="indispensable">（任意）</span>
         </div>
-        <%= f.text_area :place, class:"flower-text", id:"flower-info", placeholder:"場所" ,maxlength:"20" %>
+        <%= f.text_area :place, class:"flower-text", id:"flower-info", placeholder:"" ,maxlength:"20" %>
       </div>
     </div>
 
     <div class="flower-detail">
-      <div class="weight-bold-text">詳細</div>
+      <div class="weight-bold-text"></div>
       <div class="form">
         <div class="weight-bold-text">
           カテゴリー
@@ -166,8 +166,11 @@
       </div>
     </div>
 
+    <br>
     <div class="tag-field", id='tag-field'>
       <%= f.label :name, "タグ" %>
+      <span class="indispensable">（任意）</span>
+      <br>
       <%= f.text_field :name, class:"input-tag" %>
     </div>
     <div id="ajax-result">
@@ -190,9 +193,11 @@
   <div class="modal-wrapper" id = "exit-modal">
     <div class="modal">
      <h2>ログアウトしますか？</h2>
+     <br>
      <a class="post" href="/users/sign_out">
-     はい
+     <p>はい</p>
      </a>
+     <br>
      <p class="close-modal">いいえ</p>
       <div class = "close-modal">
         <img src="/assets/close1.png" class="close-icon icons">
