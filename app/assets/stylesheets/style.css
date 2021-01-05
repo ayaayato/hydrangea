@@ -480,3 +480,16 @@ border-bottom: solid 1px rgb(223, 223, 223);
 #email{
   width: 250px;
 }
+.user-button{
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #679cff;
+  border: solid 2px #679cff;
+  border-radius: 3px;
+  transition: .4s;
+  background-color: white;
+}
+.user-button:hover{
+  background: #679cff;
+  color: white;
+}

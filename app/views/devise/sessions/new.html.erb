@@ -3,6 +3,10 @@
 <br>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+  <%= render 'shared/error_messages', model: f.object %>
+  <br>
+
   <div class="field">
     <%= f.label :email, "Eメール" %><br />
     <%= f.email_field :email, id: "email", autofocus: true, autocomplete: "email" %>
@@ -21,7 +25,7 @@
   <% end %>
 <br>
   <div class="actions">
-    <%= f.submit "ログイン",class: "button" %>
+    <%= f.submit "ログイン",class: "user-button" %>
   </div>
 <% end %>
 
