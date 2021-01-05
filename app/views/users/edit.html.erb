@@ -10,13 +10,13 @@
     <div class='form-text-wrap'>
       <label class="form-text">ニックネーム</label>
     </div>
-    <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) furima太郎", maxlength:"40" %>
+    <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"", maxlength:"40" %>
   </div>
-
+  <br>
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "変更", class: "user-button" %>
   </div>
   <% end %>
 
-<%= link_to "Back", :back %>
+<%= link_to "戻る", :back %>
 </div>

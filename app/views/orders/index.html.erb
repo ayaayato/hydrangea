@@ -18,7 +18,7 @@
     <%= form_with url: "/skins/#{@skins.id}/orders", model: @order, local: true do |f| %>
     <div>
     <%= f.hidden_field :user_id, :value => current_user.id,readonly: true%>
-    <%= f.submit "入手する" ,class:"send-btn" %>
+    <%= f.submit "入手する" ,class:"send-btn user-button" %>
     </div>
     <%end%>
 
