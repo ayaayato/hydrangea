@@ -9,17 +9,27 @@
   カテゴリー検索
 </h1>
 <%= search_form_for @f, url: search_flowers_path do |f| %>
-  <%= f.label :category_id_eq, 'カテゴリー' %>
+  <div><%= f.label :category_id_eq, 'カテゴリー' %></div>
   <%= f.collection_select :category_id_eq, Category.all, :id, :name,  include_blank: '指定なし' %>
   <br>
-  <%= f.label :subcategory_id_eq, 'カテゴリー2' %>
+  <div><%= f.label :subcategory_id_eq, 'カテゴリー2' %></div>
   <%= f.collection_select :subcategory_id_eq, Subcategory.all, :id, :name, include_blank: '指定なし'%>
   <br>
-  <br>
-  <%= f.submit '検索', class:"submit-btn user-button" %>
+  <%= f.submit 'カテゴリ検索', class:"submit-btn user-button" %>
   <% end %>
       </div>
       <br>
+
+ <div>
+<%= search_form_for @f, url: search_flowers_path do |f| %>
+  <div><%= f.label :title_or_place_cont, 'キーワード' %></div>
+  <%= f.search_field :title_or_place_cont, placeholder: 'キーワードで検索' %>
+  <br>
+  <%= f.submit 'キーワード検索', class:"submit-btn user-button" %>
+  <% end %>
+      </div>
+      <br>
+
       <div>
       <a href="/flowers/arrival"><h3>新着一覧</h3><a>
       </div>

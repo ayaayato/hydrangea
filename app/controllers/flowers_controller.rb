@@ -33,12 +33,12 @@ end
 
 def create
   @flower = FlowersTag.new(flowers_params)
-  title = @flower.title
- if title = ""
-  flash[:alert] = "投稿内容が不正です"
-  redirect_to root_path
- elsif @flower.save
+ if @flower.valid?
+  @flower.save
   flash[:success] = "投稿しました"
+  redirect_to root_path
+ else
+  flash[:alert] = "投稿内容が不正です"
   redirect_to root_path
  end
 end
