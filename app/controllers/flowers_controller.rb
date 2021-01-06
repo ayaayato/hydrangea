@@ -33,7 +33,7 @@ end
 
 def create
   @flower = FlowersTag.new(flowers_params)
- if @flower.valid?
+ if @flower.title != "" && @flower.category_id != "" && @flower.subcategory_id != "" && @flower.image != nil
   @flower.save
   flash[:success] = "投稿しました"
   redirect_to root_path
