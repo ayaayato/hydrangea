@@ -23,7 +23,18 @@
 <img width="1436" alt="bd213f3f93324d2fc52b263e3e07e26c" src="https://user-images.githubusercontent.com/73512438/103711104-08069700-4ffa-11eb-9879-8138c70139c9.png">
 <br>
 
-- 
+- ログイン後、トップページへ遷移します。トップページには自分の投稿とお気に入りユーザーの投稿が最大100件表示されます。
+![ea6ece18abd1a48f67734f4dc335ba77](https://user-images.githubusercontent.com/73512438/103716429-5faaff80-5006-11eb-8bd2-38435413deb0.jpg)
+<br>
+
+- ヘッダー右上の若葉マークから新規投稿モーダルを表示できます。
+![9cfa1f537c83f18e258a1d925b5dd887](https://user-images.githubusercontent.com/73512438/103716627-e233bf00-5006-11eb-904d-f64aa75b2c45.jpg)
+<br>
+
+- ヘッダー右上の虫眼鏡マークから投稿検索モーダルを表示できます。
+![0a30ca924691f21c659032ca93610834](https://user-images.githubusercontent.com/73512438/103716737-1ad39880-5007-11eb-990a-53b10a500367.jpg)
+<br>
+
 
 
 ## 洗い出した機能
